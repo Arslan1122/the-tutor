@@ -44,6 +44,14 @@
                                 type="password"
                                 name="password_confirmation" required />
             </div>
+                <div class="form-group col-md-4">
+                    <label for="inputState" class="col-form-label">Select Type</label>
+                    <select id="inputState" name="role" class="form-control">
+                        <option value="teacher">Teacher</option>
+                        <option value="student">Student</option>
+
+                    </select>
+                </div>
 
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">

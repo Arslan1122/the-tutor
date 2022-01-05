@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +18,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/redirects', function () {
+    if(Auth::user()->is_admin){
+        return redirect('/admin/dashboard');
+    }elseif(!Auth::user()->is_admin){
+        if(Auth::user()->hasRole('teacher')){
+            return redirect('/teacher/dashboard');
+        }elseif(Auth::user()->hasRole('student')){
+            return redirect('/student/dashboard');
+        }
+    }
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+require __DIR__.'/admin.php';
+require __DIR__.'/student.php';
+require __DIR__.'/teacher.php';
