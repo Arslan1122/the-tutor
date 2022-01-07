@@ -26,16 +26,24 @@
 
     <!-- c3.js Charts Plugin -->
     <link href="{{asset('backend/assets/plugins/charts-c3/c3-chart.css')}}" rel="stylesheet" />
+    <!-- Time picker Plugin -->
+    <link href="{{asset('backend/assets/plugins/time-picker/jquery.timepicker.css')}}" rel="stylesheet" />
+
+    <!-- Date Picker Plugin -->
+    <link href="{{asset('backend/assets/plugins/date-picker/spectrum.css')}}" rel="stylesheet" />
 
     <!-- P-scroll bar css-->
     <link href="{{asset('backend/assets/plugins/pscrollbar/pscrollbar.css')}}" rel="stylesheet" />
 
     <!-- Data table css -->
     <link href="{{asset('backend/assets/plugins/datatable/css/dataTables.bootstrap5.min.css')}}" rel="stylesheet" />
-    <link href="{{asset('backend//assets/plugins/datatable/css/jquery.dataTables.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('backend/assets/plugins/datatable/css/jquery.dataTables.min.css')}}" rel="stylesheet" />
 
     <!---Font icons-->
-    <link href="{{asset('backend//assets/css/icons.css')}}" rel="stylesheet"/>
+    <link href="{{asset('backend/assets/css/icons.css')}}" rel="stylesheet"/>
+    <!-- file Uploads -->
+    <link href="{{asset('/backend/assets/plugins/fileuploads/css/fileupload.css')}}" rel="stylesheet" type="text/css" />
+
 
     <!--Select2 css -->
     <link href="{{asset('backend//assets/plugins/select2/select2.css')}}" rel="stylesheet" />
