@@ -38,6 +38,30 @@
 <script src="{{asset('backend/assets/plugins/chart/Chart.bundle.js')}}"></script>
 <script src="{{asset('backend/assets/plugins/chart/utils.js')}}"></script>
 
+
+<!-- Datepicker js -->
+<script src="{{asset('backend/assets/plugins/date-picker/spectrum.js')}}"></script>
+<script src="{{asset('backend/assets/plugins/date-picker/jquery-ui.js')}}"></script>
+<script src="{{asset('backend/assets/plugins/input-mask/jquery.maskedinput.js')}}"></script>
+
+<!-- Timepicker js -->
+<script src="{{asset('backend/assets/plugins/time-picker/jquery.timepicker.js')}}"></script>
+<script src="{{asset('backend/assets/plugins/time-picker/toggles.min.js')}}"></script>
+<!-- Inline js -->
+<script src="{{asset('backend/assets/js/select2.js')}}"></script>
+<script src="{{asset('backend/assets/js/formelements.js')}}"></script>
+
+<!--fileupload js -->
+<script src="{{asset('backend/assets/js/file-upload.js')}}"></script>
+<script src="{{asset('backend/assets/js/date-picker.js')}}"></script>
+
+<!-- file uploads js -->
+<script src="{{asset('backend/assets/plugins/fileuploads/js/fileupload.js')}}"></script>
+
+<!--InputMask Js-->
+<script src="{{asset('backend/assets/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js')}}"></script>
+
+
 <!-- ECharts Plugin -->
 <script src="{{asset('backend/assets/js/index1.js')}}"></script>
 
