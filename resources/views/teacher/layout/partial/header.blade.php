@@ -16,38 +16,7 @@
                                 <strong class="text-dark">English</strong>
                             </div>
                         </a>
-                        <div class="language-width dropdown-menu dropdown-menu-start dropdown-menu-arrow">
-                            <a href="javascript:void(0)" class="dropdown-item d-flex pb-3">
-                                <img src="{{asset('backend/assets/images/flags/french_flag.jpg')}}"  alt="flag-img" class="avatar  me-3 align-self-center" >
-                                <div>
-                                    <strong>French</strong>
-                                </div>
-                            </a>
-                            <a href="javascript:void(0)" class="dropdown-item d-flex pb-3">
-                                <img src="{{asset('backend/assets/images/flags/germany_flag.jpg')}}"  alt="flag-img" class="avatar  me-3 align-self-center" >
-                                <div>
-                                    <strong>Germany</strong>
-                                </div>
-                            </a>
-                            <a href="javascript:void(0)" class="dropdown-item d-flex pb-3">
-                                <img src="{{asset('backend/assets/images/flags/italy_flag.jpg')}}"  alt="flag-img" class="avatar  me-3 align-self-center" >
-                                <div>
-                                    <strong>Italy</strong>
-                                </div>
-                            </a>
-                            <a href="javascript:void(0)" class="dropdown-item d-flex pb-3">
-                                <img src="{{asset('backend/assets/images/flags/russia_flag.jpg')}}"  alt="flag-img" class="avatar  me-3 align-self-center" >
-                                <div>
-                                    <strong>Russia</strong>
-                                </div>
-                            </a>
-                            <a href="javascript:void(0)" class="dropdown-item d-flex pb-3">
-                                <img src="{{asset('backend/assets/images/flags/spain_flag.jpg')}}"  alt="flag-img" class="avatar  me-3 align-self-center" >
-                                <div>
-                                    <strong>Spain</strong>
-                                </div>
-                            </a>
-                        </div>
+
                     </div>
                     <div class="d-flex order-lg-2 ms-auto heaader-right">
                         <button class="navbar-toggler navresponsive-toggler d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,15 +25,7 @@
                         <div class="p-0 mb-0 navbar navbar-expand-lg  responsive-navbar navbar-dark  ">
                             <div class="navbar-collapse collapse" id="navbarSupportedContent-4">
                                 <div class="d-flex">
-                                    <div class="header-navsearch">
-                                        <a href="javascript:void(0)" class=" "></a>
-                                        <form class="form-inline me-auto">
-                                            <div class="nav-search">
-                                                <input type="search" class="form-control header-search" placeholder="Search…" aria-label="Search" >
-                                                <button class="btn" type="submit"><i class=""><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></i></button>
-                                            </div>
-                                        </form>
-                                    </div>
+
                                     <div class="header-navicon">
                                         <a href="javascript:void(0)" data-bs-toggle="search" class="nav-link d-lg-none navsearch-icon">
                                             <i class=""><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></i>
@@ -123,39 +84,7 @@
                                             <a href="javascript:void(0)" class="dropdown-item text-center">See all Notification</a>
                                         </div>
                                     </div>
-                                    <div class="dropdown header-message d-flex">
-                                        <a class="nav-link icon" data-bs-toggle="dropdown">
-                                            <i class=""><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg></i>
-                                            <span class=" nav-unread badge badge-warning  badge-pill">3</span>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                            <a href="javascript:void(0)" class="dropdown-item font-weight-bold text-center">You have 3 Messages</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a href="javascript:void(0)" class="dropdown-item d-flex pb-3">
-                                                <img src="{{asset('backend/assets/images/users/male/41.jpg')}}" alt="avatar-img" class="avatar brround me-3 align-self-center">
-                                                <div>
-                                                    <strong>Blake</strong> I've finished it! See you so.......
-                                                    <div class="small text-muted">30 mins ago</div>
-                                                </div>
-                                            </a>
-                                            <a href="javascript:void(0)" class="dropdown-item d-flex pb-3">
-                                                <img src="{{asset('backend/assets/images/users/female/1.jpg')}}" alt="avatar-img" class="avatar brround me-3 align-self-center">
-                                                <div>
-                                                    <strong>Caroline</strong> Just see the my Admin....
-                                                    <div class="small text-muted">12 mins ago</div>
-                                                </div>
-                                            </a>
-                                            <a href="javascript:void(0)" class="dropdown-item d-flex pb-3">
-                                                <img src="{{asset('backend/assets/images/users/male/18.jpg')}}" alt="avatar-img" class="avatar brround me-3 align-self-center">
-                                                <div>
-                                                    <strong>Jonathan</strong> Hi! I'am singer......
-                                                    <div class="small text-muted">1 hour ago</div>
-                                                </div>
-                                            </a>
-                                            <div class="dropdown-divider"></div>
-                                            <a href="javascript:void(0)" class="dropdown-item text-center">View all Messages</a>
-                                        </div>
-                                    </div>
+
                                     <div class="dropdown d-flex header-grid">
                                         <a class="nav-link icon" data-bs-toggle="dropdown">
                                             <i class=""><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M3,3v8h8V3H3z M9,9H5V5h4V9z M3,13v8h8v-8H3z M9,19H5v-4h4V19z M13,3v8h8V3H13z M19,9h-4V5h4V9z M13,13v8h8v-8H13z M19,19h-4v-4h4V19z"/></g></g></g></svg></i>
