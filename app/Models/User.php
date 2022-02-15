@@ -42,6 +42,7 @@ class User extends Authenticatable
         }
 
     }
+
     public function teacherProfile(){
 
         return $this->hasOne(User::class,'user_id','id');
