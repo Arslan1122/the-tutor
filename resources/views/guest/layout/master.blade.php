@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
 
-<!-- Mirrored from spruko.com/demo/edomi/Edomi/LTR/Html/header-style1.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Dec 2021 06:57:41 GMT -->
 @include('guest.layout.partial.style')
 
 <body>
@@ -1725,5 +1724,4 @@
 @include('guest.layout.partial.scripts')
 </body>
 
-<!-- Mirrored from spruko.com/demo/edomi/Edomi/LTR/Html/header-style1.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Dec 2021 06:57:41 GMT -->
 </html>

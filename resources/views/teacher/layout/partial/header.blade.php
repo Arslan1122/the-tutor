@@ -149,9 +149,14 @@
                                             <a class="dropdown-item" href="editprofile.html">
                                                 <i class="dropdown-icon  icon icon-settings"></i> Account Settings
                                             </a>
-                                            <a class="dropdown-item" href="login.html">
+                                            <form method="POST" action="{{ route('logout') }}">
+                                                @csrf
+                                            <a class="dropdown-item" href="#"
+                                                onclick="event.preventDefault();
+                                                this.closest('form').submit();">
                                                 <i class="dropdown-icon  icon icon-power"></i> Log out
                                             </a>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
