@@ -39,3 +39,5 @@
     <link id="theme" rel="stylesheet" type="text/css" media="all" href="{{asset('frontend/assets/color-skins/color.css')}}" />
 
 </head>
+<body>
+
