@@ -4,7 +4,7 @@
         <div class="app-header1 header py-2 d-flex">
             <div class="container-fluid">
                 <div class="d-flex">
-                    <a class="header-brand" href="index.html">
+                    <a class="header-brand" href="">
                         <img src="{{asset('backend/assets/images/brand/logo.png')}}" class="header-brand-img desktop-logo" alt="logo">
                         <img src="{{asset('backend/assets/images/brand/favicon.png')}}" class="header-brand-img mobile-logo" alt="logo">
                     </a>
@@ -220,9 +220,14 @@
                                             <a class="dropdown-item" href="editprofile.html">
                                                 <i class="dropdown-icon  icon icon-settings"></i> Account Settings
                                             </a>
-                                            <a class="dropdown-item" href="login.html">
-                                                <i class="dropdown-icon  icon icon-power"></i> Log out
-                                            </a>
+                                            <form method="POST" action="{{ route('logout') }}">
+                                                @csrf
+                                                <a class="dropdown-item" href="#"
+                                                   onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                                    <i class="dropdown-icon  icon icon-power"></i> Log out
+                                                </a>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
