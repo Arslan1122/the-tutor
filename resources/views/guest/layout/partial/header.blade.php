@@ -1,5 +1,5 @@
 <!--Section-->
-<div class="cover-image bg-background-1" data-bs-image-src="../../assets/images/banners/banner1.jpg">
+<div class="cover-image bg-background-1" data-bs-image-src="{{ asset('frontend/assets/images/banners/banner1.jpg') }}">
     <!--Topbar-->
     <div class="header-main">
         <!-- Mobile Header -->
@@ -7,8 +7,8 @@
             <div class="horizontal-header clearfix ">
                 <div class="container">
                     <a id="horizontal-navtoggle" class="animated-arrow"><span></span></a>
-                    <span class="smllogo"><img src="../../assets/images/brand/logo1.png" width="120" alt="img"/></span>
-                    <span class="smllogo-white"><img src="../../assets/images/brand/logo.png" width="120" alt="img"/></span>
+                    <span class="smllogo"><img src="{{ asset('frontend/assets/images/brand/logo1.png') }}" width="120" alt="img"/></span>
+                    <span class="smllogo-white"><img src="{{ asset('frontend/assets/images/brand/logo.png') }}" width="120" alt="img"/></span>
                     <a href="tel:245-6325-3256" class="callusbtn"><i class="icon icon-phone" aria-hidden="true"></i></a>
                 </div>
             </div>
@@ -19,12 +19,12 @@
         <div class="horizontal-main header-style1 p-0 bg-dark-transparent clearfix">
             <div class="horizontal-mainwrapper container clearfix">
                 <div class="desktoplogo">
-                    <a href="index.html"><img src="../../assets/images/brand/logo1.png" alt="img">
-                        <img src="../../assets/images/brand/logo.png" class="header-brand-img header-white" alt="logo">
+                    <a href=""><img src="{{ asset('frontend/assets/images/brand/logo1.png') }}" alt="img">
+                        <img src="{{ asset('frontend/assets/images/brand/logo.png') }}" class="header-brand-img header-white" alt="logo">
                     </a>
                 </div>
                 <div class="desktoplogo-1">
-                    <a href="index.html"><img src="../../assets/images/brand/logo.png" alt="img"></a>
+                    <a href=""><img src="{{ asset('frontend/assets/images/brand/logo.png') }}" alt="img"></a>
                 </div>
                 <nav class="horizontalMenu clearfix d-md-flex">
                     <ul class="horizontalMenu-list">
@@ -154,12 +154,12 @@
                         </li>
                         <li aria-haspopup="true"><a href="contact.html"> Contact Us</a></li>
                         <li aria-haspopup="true" class="d-lg-none mt-5 pb-5 mt-lg-0">
-                            <span><a class="btn btn-info" href="course-posts.html">Register Now</a></span>
+                            <span><a class="btn btn-info" href="{{ route('register') }}">Register Now</a></span>
                         </li>
                     </ul>
                     <ul class="mb-0">
                         <li aria-haspopup="true" class="d-none d-lg-block mt-2 top-postbtn">
-                            <span><a class="btn btn-secondary" href="course-posts.html">Register Now</a></span>
+                            <span><a class="btn btn-secondary" href="{{ route('register') }}">Register Now</a></span>
                         </li>
                     </ul>
                 </nav>
@@ -167,50 +167,3 @@
         </div>
     </div><!--/Horizontal-main -->
 
-    <!--Section-->
-    <section>
-        <div class="sptb-2 sptb-tab">
-            <div class="header-text mb-0">
-                <div class="container">
-                    <div class="text-center text-white mb-7 mt-7 mt-lg-0">
-                        <h1 class="mb-1">The Word's Largest Selection of Courses</h1>
-                        <p>It is a long established fact that a reader will be distracted by the readable.</p>
-                    </div>
-                    <div class="row">
-                        <div class="col-xl-10 col-lg-12 col-md-12 d-block mx-auto">
-                            <div class="search-background bg-transparent typewrite-text">
-                                <div class="row">
-                                    <div class="col-xl-10 col-lg-12 col-md-12 d-block mx-auto">
-                                        <div class="form row g-0 ">
-                                            <div class="form-group col-xl-4 col-lg-3 col-md-12 select2-lg br-ts-7 br-bs-7 mb-0">
-                                                <select class="form-control select2-show-search  border-bottom-0" data-placeholder="Select Category">
-                                                    <optgroup label="Categories">
-                                                        <option>Select</option>
-                                                        <option value="1">IT</option>
-                                                        <option value="2">Language</option>
-                                                        <option value="3">Science</option>
-                                                        <option value="4">Health</option>
-                                                        <option value="5">Humanities</option>
-                                                        <option value="6">Business</option>
-                                                        <option value="7">Maths</option>
-                                                        <option value="8">Marketing</option>
-                                                    </optgroup>
-                                                </select>
-                                            </div>
-                                            <div class="form-group  col-xl-6 col-lg-6 col-md-12 mb-0">
-                                                <input type="text" class="form-control input-xl br-0" placeholder="Search Courses...." data-min-length="1" list="courses" name="courses">
-                                            </div>
-                                            <div class="col-xl-2 col-lg-3 col-md-12 mb-0">
-                                                <a href="javascript:void(0)" class="btn btn-xl btn-block btn-secondary br-ts-md-0 br-bs-md-0"><i class="fe fe-search"></i> Search</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- /header-text -->
-        </div>
-    </section><!--/Section-->
-</div><!--/Section-->
