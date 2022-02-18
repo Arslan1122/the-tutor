@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Models\Teacher;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TeacherProfile extends Model
+class Subject extends Model
 {
     use HasFactory;
+
+    public $guarded = [];
 }

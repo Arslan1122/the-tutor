@@ -7,7 +7,7 @@
                     <div class="text-center text-white py-7">
                         <h1 class="">Register</h1>
                         <ol class="breadcrumb text-center">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">The Tutor</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">My Tutor</a></li>
                             <li class="breadcrumb-item active text-white" aria-current="page">Register</li>
                         </ol>
                     </div>
@@ -41,7 +41,7 @@
                             @endif
                             <div class="mb-6">
                                 <h5 class="fs-25 font-weight-semibold">Register</h5>
-                                <p class="fs-16">Register yourself with The Tutor </p>
+                                <p class="fs-16">Register yourself with My Tutor </p>
                             </div>
                             <div class="single-page customerpage">
                                 <div class="wrapper wrapper2 box-shadow-0">

@@ -30,7 +30,7 @@
                                             <img src="{{asset('backend/assets/images/users/female/20.jpg')}}" alt="profile-img" class="avatar">
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow ">
-                                            <a class="dropdown-item" href="profile.html">
+                                            <a class="dropdown-item" href="{{ route('teacher.profile.display') }}">
                                                 <i class="dropdown-icon icon icon-user"></i> My Profile
                                             </a>
                                             <form method="POST" action="{{ route('logout') }}">

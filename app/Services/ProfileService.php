@@ -19,21 +19,21 @@ class ProfileService
         return $model;
     }
 
-    public function updateOrCreate($id,$request,$modelName,$prefix)
+    public function updateOrCreate($id,$request,$modelName)
     {
 
         try {
             DB::beginTransaction();
 
             $name=str_replace(' ','',$request->first_name).' '.str_replace(' ','',$request->last_name);
-            $model = $this->returnModel($prefix.$modelName);
+            $model = $this->returnModel($modelName);
             if($request->profile_img){
                 if($request->old_image){
                 unlink($request->old_image);
                 }
                 $profieImg=$request->profile_img;
                 $ImgnewName=time().$request->first_name.'.'.$profieImg->getClientOriginalExtension();
-                $path='/uploads/'.$prefix.'/profileImg';
+                $path='/uploads/profileImg';
                 $profileImg=Image::make($profieImg->getRealPath());
                 $profileImg->save(public_path($path).'/'.$ImgnewName);
                 $model::updateOrCreate(['user_id'=>$id],['profile_img'=>$path.'/'.$ImgnewName]);
@@ -44,7 +44,7 @@ class ProfileService
                 }
                 $IntroClip=$request->intro_clip;
                 $newClip=time().$request->first_name.'.'.$IntroClip->getClientOriginalExtension();
-                $path='/uploads/'.$prefix.'/introClip';
+                $path='/uploads/introClip';
 
                 $IntroClip->move(public_path($path).'/',$newClip);
                 $model::updateOrCreate(['user_id'=>$id],['intro_clip'=>$path.'/'.$newClip]);
