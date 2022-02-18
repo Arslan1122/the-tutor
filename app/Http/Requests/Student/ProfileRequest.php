@@ -24,11 +24,10 @@ class ProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'institute_name' => ['required', 'string', ],
-            'degree_name' => ['required', 'string'],
+            'institute_name' => ['string', ],
+            'degree_name' => ['string'],
             'profile_img' => ['image','mimes:jpeg,png,jpg,gif,svg,max:2048'],
-            'intro_clip' => ['mimes:mp4,mov,ogg,qt', 'max:20000'],
-            'about_me' => ['required', 'string'],
+            'intro_clip' => ['mimes:mp4,mov,ogg,qt', 'max:100000'],
         ];
     }
     public function messages()

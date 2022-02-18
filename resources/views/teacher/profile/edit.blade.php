@@ -13,6 +13,9 @@
                 {{$error}}.</div>
     @endforeach
     <!--Page-Header-->
+        @if(!$profile->is_complete)
+            <div class="alert alert-danger">Please ! Complete your profile,Admin will review your profile and approve it within 48 hours. </div>
+        @endif
 
         <div class="row ">
             <div class="col-lg-4">
@@ -22,29 +25,30 @@
                     </div>
 
                     <div class="card-body">
-                        <form>
+                        <form method="POST" action="{{ route('teacher.profile.store') }}">
+                            @csrf
                             <div class="row mb-2">
                                 <div class="col-auto">
                                     <img class="avatar brround avatar-xl" src="{{ asset('backend/assets/images/users/male/25.jpg') }}" alt="Avatar-img">
                                 </div>
                                 <div class="col">
-                                    <h3 class="mb-1 ">Robert McLean</h3>
-                                    <p class="mb-4 ">Administrator</p>
+                                    <h3 class="mb-1 ">{{ \Auth::user()->name }}</h3>
+                                    <p class="mb-4 ">Teacher</p>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Bio</label>
-                                <textarea class="form-control" rows="5">Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li lingues differe solmen in li grammatica, li pronunciation e li plu commun vocabules. Omnicos directe al desirabilite de un nov lingua franca: On refusa continuar payar custosi traductores. At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles.</textarea>
+                                <label class="form-label font-weight-bold">Your Introduction</label>
+                                <textarea class="form-control" rows="5" name="bio">{{ @$profile->bio }}</textarea>
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Email-Address</label>
-                                <input class="form-control" readonly placeholder="your-email@domain.com" value="robertmclean@spruko.com"/>
+                                <label class="form-label font-weight-bold">Full Name</label>
+                                <input class="form-control" placeholder="" name="name" value=" {{ \Auth::user()->name }}">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label font-weight-bold">Email-Address</label>
+                                <input class="form-control" readonly placeholder="your-email@domain.com" value="{{ \Auth::user()->email }}"/>
                             </div>
 
-                            <div class="form-group">
-                                <label class="form-label">Website</label>
-                                <input class="form-control" placeholder="http://Edomi.com" value="http://Edomi.com">
-                            </div>
                             <div class="form-footer">
                                 <button class="btn btn-primary btn-block">Save</button>
                             </div>
@@ -59,62 +63,74 @@
                     <input type="hidden" name="old_clip" value="{{@$profile->intro_clip}}">
 
                     <div class="card-header">
-                        <h3 class="card-title">Edit Profile</h3>
+                        <h3 class="card-title">Qualification / Skills</h3>
                     </div>
 
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-label">Institute Name</label>
-                                    <input type="text" class="form-control @error('institute_name') is-invalid state-invalid @enderror"   placeholder="Institute" name="institute_name" value="{{@$profile->institute_name}}" >
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="form-label">Degree Name</label>
-                                    <input type="text" name="degree_name" class="form-control @error('degree_name') is-invalid state-invalid @enderror"  placeholder="BS software engineering" value="{{@$profile->degree_name}}" >
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-3">
-                                <div class="form-group">
-                                    <label class="form-label">Username</label>
-                                    <input type="text" class="form-control @error('institute_name') is-invalid state-invalid @enderror"  placeholder="Username" value="Robert123" >
+                                    <label class="form-label font-weight-bold">Degree Name</label>
+                                    <input type="text" name="degree_name" class="form-control @error('degree_name') is-invalid state-invalid @enderror"  value="{{@$profile->degree_name}}" >
                                 </div>
                             </div>
 
-                            <div class="col-sm-6 col-md-6">
+                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-label">First Name</label>
-                                    <input type="text" name="first_name" class="form-control @error('first_name') is-invalid state-invalid @enderror" placeholder="Company" value="{{Auth::user()->Firstname}}">
+                                    <label class="form-label font-weight-bold">Institute Name</label>
+                                    <input type="text" class="form-control @error('institute_name') is-invalid state-invalid @enderror"  name="institute_name" value="{{@$profile->institute_name}}" >
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-md-6">
+                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-label">Last Name</label>
-                                    <input type="text" name="last_name" class="form-control @error('last_name') is-invalid state-invalid @enderror" placeholder="Last Name" value="{{Auth::user()->Lastname}}">
+                                    <label class="form-label font-weight-bold">Standards ( You wanna teach)</label>
+                                    <select class="form-control select2" name="standards[]" data-placeholder="Choose Standards" multiple>
+                                        @foreach($standards as $standard)
+                                        <option value="{{ $standard->id }}" @if(in_array($standard->id, $userStandards))selected @endif>{{ $standard->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label font-weight-bold">Subjects ( You wanna teach)</label>
+                                    <select class="form-control select2" name="subjects[]" data-placeholder="Choose Standards" multiple>
+                                        @foreach($subjects as $subject)
+                                            <option value="{{ $subject->id }}" @if(in_array($subject->id, $userSubjects))selected @endif> {{ $subject->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="form-label">Address</label>
+                                    <label class="form-label font-weight-bold">Courses</label>
+                                    <select class="form-control select2" name="courses[]" data-placeholder="Choose Standards" multiple>
+                                        @foreach($courses as $course)
+                                            <option value="{{ $course->id }}" @if(in_array($course->id, $userCourses))selected @endif> {{ $course->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="form-label font-weight-bold">Address</label>
                                     <input type="text" name="address" class="form-control" placeholder="Home Address" value="{{@$profile->address}}" >
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <label class="form-label">City</label>
+                                    <label class="form-label font-weight-bold">City</label>
                                     <input type="text" name="city" class="form-control" placeholder="City" value="{{@$profile->city}}">
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <label class="form-label">Postal Code</label>
+                                    <label class="form-label font-weight-bold">Postal Code</label>
                                     <input type="number" name="postal_code" class="form-control" placeholder="ZIP Code" value="{{@$profile->postal_code}}">
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-6">
-                                <label class="form-label">Profile Image</label>
+                                <label class="form-label font-weight-bold">Profile Image</label>
                                 <input type="file" name="profile_img" value="1" class="dropify  @error('profile_img') is-invalid state-invalid @enderror" data-default-file="{{asset(@$profile->profile_img)}}" data-height="180"  />
                                 @error('profile_img')
                                 <div class="text-danger">{{$message}}</div>
@@ -122,11 +138,17 @@
 
                             </div>
                             <div class="col-sm-6 col-md-6">
-                                <label class="form-label">Introduction Video</label>
-                                <input type="file" name="intro_clip" class="dropify @error('intro_clip') is-invalid state-invalid @enderror " data-default-file="" data-height="180"  />
+                                <label class="form-label font-weight-bold">Introduction Video ( Max 10 MB)</label>
+                                <input type="file" name="intro_clip" class="dropify @error('intro_clip') is-invalid state-invalid @enderror " data-default-file="" data-height="180" data-max-file-size="10M" />
                                 @error('intro_clip')
                                 <div class="text-danger">{{$message}}</div>
                                 @enderror
+                            </div>
+                            <div class="col-sm-12 col-md-12 mt-5">
+                                <div class="form-group">
+                                    <label class="form-label font-weight-bold">Write All your Qualifications </label>
+                                    <textarea class="form-control" rows="5" name="about_me">{{ @$profile->about_me }}</textarea>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -138,3 +160,4 @@
         </div>
     </div>
 @endsection
+
