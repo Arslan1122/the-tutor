@@ -23,6 +23,7 @@ class CrudService
         try {
 
             $model = $this->returnModel($modelName);
+
             $model::find($id)->delete();
             return response()->json(['flag' => true]);
         } catch (\Exception $e) {

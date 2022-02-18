@@ -54,5 +54,5 @@
     <!-- Color Skin css -->
     <link id="theme" rel="stylesheet" type="text/css" media="all" href="{{asset('backend/assets/color-skins/color.css')}}" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-
+    @yield('style')
 </head>

@@ -30,6 +30,30 @@
 
 
 @include('common.scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    toastr.options = {
+        "closeButton": true,
+    }
+    @if(session()->has('success'))
+    toastr.success("{{session()->get('success')}}");
+    @endif
+    @if(session()->has('info'))
+    toastr.info("{{session()->get('info')}}");
+    @endif
+    @if(session()->has('warning'))
+    toastr.warning("{{session()->get('warning')}}");
+    @endif
+    @if(session()->has('error'))
+    toastr.warning("{{session()->get('error')}}");
+    @endif
+    @if(count($errors)>0)
+    @foreach($errors->all() as $error)
+    toastr.error("{{$error}}");
+    @endforeach
+    @endif
+    </script>
 </body>
 
 </html>

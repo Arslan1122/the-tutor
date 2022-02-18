@@ -25,6 +25,8 @@
 <!-- Data tables -->
 <script src="{{asset('backend/assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('backend/assets/plugins/datatable/js/dataTables.bootstrap5.min.js')}}"></script>
+<script src="{{asset('backend/assets/js/datatable.js')}}"></script>
+
 
 <!-- Datepicker js -->
 <script src="{{asset('backend/assets/plugins/date-picker/spectrum.js')}}"></script>
