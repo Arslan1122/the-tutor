@@ -42,9 +42,9 @@
     <!---Font icons-->
     <link href="{{asset('backend/assets/css/icons.css')}}" rel="stylesheet"/>
     <!-- file Uploads -->
-    <link href="{{asset('/backend/assets/plugins/fileuploads/css/fileupload.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('backend/assets/plugins/fileuploads/css/fileupload.css')}}" rel="stylesheet" type="text/css" />
 
-
+    <link href="{{ asset('backend/assets/plugins/sweet-alert/sweetalert.css') }}" rel="stylesheet" />
     <!--Select2 css -->
     <link href="{{asset('backend//assets/plugins/select2/select2.css')}}" rel="stylesheet" />
 

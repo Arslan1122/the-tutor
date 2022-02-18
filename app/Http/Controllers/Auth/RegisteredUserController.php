@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\TeacherProfile;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -45,6 +46,12 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
         $user->assignRole($request->role);
+
+        if($request->role == "teacher") {
+            $profile = new TeacherProfile();
+            $profile->user_id = $user->id;
+            $profile->save();
+        }
 
         event(new Registered($user));
 

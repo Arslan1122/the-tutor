@@ -26,6 +26,7 @@ class CreateTeacherProfilesTable extends Migration
             $table->string('intro_clip')->nullable();
             $table->text('about_me')->nullable();
             $table->text('bio')->nullable();
+            $table->boolean('is_complete')->default(0);
             $table->timestamps();
         });
     }

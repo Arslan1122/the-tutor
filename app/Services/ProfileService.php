@@ -4,6 +4,10 @@ namespace App\Services;
 
 
 use App\Models\User;
+use App\Models\UserCourse;
+use App\Models\UserStandard;
+use App\Models\UserSubject;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
 
@@ -19,45 +23,76 @@ class ProfileService
         return $model;
     }
 
-    public function updateOrCreate($id,$request,$modelName,$prefix)
+    public function updateOrCreate($id,$request,$modelName)
     {
-
         try {
             DB::beginTransaction();
 
-            $name=str_replace(' ','',$request->first_name).' '.str_replace(' ','',$request->last_name);
-            $model = $this->returnModel($prefix.$modelName);
+            $model = $this->returnModel($modelName);
+
             if($request->profile_img){
                 if($request->old_image){
-                unlink($request->old_image);
+                    unlink($request->old_image);
                 }
+
                 $profieImg=$request->profile_img;
-                $ImgnewName=time().$request->first_name.'.'.$profieImg->getClientOriginalExtension();
-                $path='/uploads/'.$prefix.'/profileImg';
+                $ImgnewName=time().'.'.$profieImg->getClientOriginalExtension();
+                $path='/uploads/Teacher/profileImg';
                 $profileImg=Image::make($profieImg->getRealPath());
                 $profileImg->save(public_path($path).'/'.$ImgnewName);
                 $model::updateOrCreate(['user_id'=>$id],['profile_img'=>$path.'/'.$ImgnewName]);
             }
+
             if($request->intro_clip){
                 if($request->old_clip){
                     unlink($request->old_clip);
                 }
                 $IntroClip=$request->intro_clip;
-                $newClip=time().$request->first_name.'.'.$IntroClip->getClientOriginalExtension();
-                $path='/uploads/'.$prefix.'/introClip';
+                $newClip=time().'.'.$IntroClip->getClientOriginalExtension();
+                $path='/uploads/Teacher/introClip';
 
                 $IntroClip->move(public_path($path).'/',$newClip);
                 $model::updateOrCreate(['user_id'=>$id],['intro_clip'=>$path.'/'.$newClip]);
             }
 
-            User::updateOrCreate(['id'=>$id],['name'=>$name]);
-            $data = $request->except(['_token','intro_clip','old_clip','profile_img','old_image','first_name','last_name']);
+            $data = $request->except(['_token','intro_clip','old_clip','profile_img','old_image','standards', 'courses', 'subjects']);
             $model::updateOrCreate(['user_id'=>$id],$data);
+
+            if(sizeof($request->standards) > 0) {
+                UserStandard::where('user_id', Auth::id())->delete();
+                foreach ($request->standards  as $sId) {
+                    UserStandard::create([
+                        'user_id' => Auth::id(),
+                        'standard_id' => $sId,
+                    ]);
+                }
+            }
+
+            if(sizeof($request->courses) > 0) {
+                UserCourse::where('user_id', Auth::id())->delete();
+                foreach ($request->courses  as $cId) {
+                    UserCourse::create([
+                        'user_id' => Auth::id(),
+                        'course_id' => $cId,
+                    ]);
+                }
+            }
+
+
+            if(sizeof($request->subjects) > 0) {
+                UserSubject::where('user_id', Auth::id())->delete();
+                foreach ($request->subjects  as $suId) {
+                    UserSubject::create([
+                        'user_id' => Auth::id(),
+                        'subject_id' => $suId,
+                    ]);
+                }
+            }
+
             DB::commit();
             return response()->json(['flag' => true]);
         } catch (\Exception $e) {
             DB::rollBack();
-            dd($e->getMessage());
             return response()->json(['flag' => false]);
         }
 

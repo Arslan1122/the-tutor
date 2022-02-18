@@ -40,7 +40,6 @@ class CrudService
 
     public function update($id,$request,$modelName)
     {
-        dd($id,$request,$modelName);
         try {
             $data = $request->except('_token');
             $model = $this->returnModel($modelName);
