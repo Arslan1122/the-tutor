@@ -58,7 +58,8 @@ class TeacherController extends Controller
      */
     public function edit($id)
     {
-        //
+        $teacher = User::with(['teacherProfile', 'standards.standard' ,'courses.course', 'subjects.subject'])->find($id);
+        return view('admin.teacher.edit', compact('teacher'));
     }
 
     /**
@@ -95,5 +96,26 @@ class TeacherController extends Controller
         $teachers = User::role('teacher')->with('teacherProfile')->where('is_approved', 0)->orderBy('id','desc')->get();
         return view('admin.teacher.unapproved', compact('teachers'));
 
+    }
+
+    public function changeStatus($id, $status)
+    {
+        if($status == 1) {
+            $user = User::find($id)->update([
+                'is_approved' => 1,
+            ]);
+
+            $user->teacherProfile->update(['is_complete' => 1]);
+
+            return redirect()->back()->with('success', 'Teacher Approved Successfully !');
+
+        } else {
+            $user = User::find($id)->update([
+                'is_approved' => 0,
+            ]);
+            $user->teacherProfile->update(['is_complete' => 0]);
+
+            return redirect()->back()->with('success', 'Teacher Blocked Successfully !');
+        }
     }
 }

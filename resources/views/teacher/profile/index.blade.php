@@ -15,7 +15,7 @@
                 <div class="card user-pro-list overflow-hidden">
                     <div class="card-body">
                         <div class="user-pic text-center">
-											<span class="avatar avatar-xxl brround" style="background-image: url(../../assets/images/users/female/3.jpg)">
+											<span class="avatar avatar-xxl brround" style="background-image: url(@if(isset($teacher->teacherProfile->profile_img)) {{ asset($teacher->teacherProfile->profile_img) }} @else {{ asset('backend/assets/images/users/female/3.jpg') }} @endif">
 												<span class="avatar-status bg-green"></span>
 											</span>
                             <div class="pro-user mt-3">

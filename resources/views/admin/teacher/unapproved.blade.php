@@ -40,7 +40,7 @@
                                 <div class="item-action dropdown">
                                     <a href="javascript:void(0)" data-bs-toggle="dropdown" class="icon"><i class="fe fe-more-vertical fs-20 text-dark"></i></a>
                                     <div class="dropdown-menu dropdown-menu-end">
-                                        <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-eye"></i> View </a>
+                                        <a href="{{ route('admin.teachers.edit', $teacher->id)}}" class="dropdown-item"><i class="dropdown-icon fe fe-eye"></i> View </a>
                                         <form method="POST" action="{{ route('admin.teachers.destroy', $teacher->id) }}">
                                             @method('DELETE')
                                             @csrf

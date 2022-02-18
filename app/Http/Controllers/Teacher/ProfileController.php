@@ -31,8 +31,11 @@ class ProfileController extends Controller
     }
 
     public function display(){
-        return view('teacher.profile.index');
+        $teacher = User::with(['teacherProfile', 'standards'])->find(Auth::id());
+        dd($teacher);
+        return view('teacher.profile.index',compact('teacher'));
     }
+
     public function edit(){
 
         $profile=TeacherProfile::with('user')->where('user_id',Auth::id())->first();
@@ -61,6 +64,7 @@ class ProfileController extends Controller
     {
         User::find(Auth::id())->update([
             'name' => $request->name,
+            'phone_number' => $request->phone_number
         ]);
         TeacherProfile::where('user_id', Auth::id())->update([
             'bio' => $request->bio,

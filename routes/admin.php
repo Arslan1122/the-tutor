@@ -13,6 +13,7 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin'], 'as' => 'admin.'
     Route::group(['prefix' => 'teacher'], function (){
         Route::get('approved', [TeacherController::class, 'approvedTeachers'])->name('approved.teachers');
         Route::get('unapproved', [TeacherController::class, 'unApprovedTeachers'])->name('un.approved.teachers');
+        Route::get('change-status/{id}/{status}', [TeacherController::class, 'changeStatus'])->name('change.status');
     });
 
 });

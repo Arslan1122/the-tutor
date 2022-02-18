@@ -45,6 +45,10 @@
                                 <input class="form-control" placeholder="" name="name" value=" {{ \Auth::user()->name }}">
                             </div>
                             <div class="form-group">
+                                <label class="form-label font-weight-bold">Phone Number</label>
+                                <input class="form-control" placeholder="" name="phone_number" value=" {{ \Auth::user()->phone_number }}">
+                            </div>
+                            <div class="form-group">
                                 <label class="form-label font-weight-bold">Email-Address</label>
                                 <input class="form-control" readonly placeholder="your-email@domain.com" value="{{ \Auth::user()->email }}"/>
                             </div>
