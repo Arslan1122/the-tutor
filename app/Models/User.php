@@ -48,4 +48,18 @@ class User extends Authenticatable
         return $this->hasOne(TeacherProfile::class);
     }
 
+    public function courses()
+    {
+        return $this->hasMany(UserCourse::class);
+    }
+
+    public function subjects()
+    {
+        return $this->hasMany(UserSubject::class);
+    }
+
+    public function standards()
+    {
+        return $this->hasMany(UserStandard::class);
+    }
 }

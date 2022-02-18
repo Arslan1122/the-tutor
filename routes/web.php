@@ -23,9 +23,9 @@ Route::get('/redirects', function () {
         return redirect('/admin/dashboard');
     }elseif(!Auth::user()->is_admin){
         if(Auth::user()->hasRole('teacher')){
-            return redirect('/teacher/dashboard');
+            return redirect('teacher/profile/edit');
         }elseif(Auth::user()->hasRole('student')){
-            return redirect('/student/dashboard');
+            return redirect()->route('student.dashboard');
         }
     }
 });
@@ -36,5 +36,5 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 require __DIR__.'/admin.php';
-//require __DIR__.'/student.php';
+require __DIR__.'/student.php';
 require __DIR__.'/teacher.php';
