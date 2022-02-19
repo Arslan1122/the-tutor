@@ -77,6 +77,17 @@
                         </div>
                     </div>
                 </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Introduction video</h4>
+                        <video width="280" height="200" autoplay controls>
+                            <source src="{{ asset($teacher->teacherProfile->intro_clip) }}" type="video/mp4">
+                        </video>
+{{--                        <iframe width="280" height="200"--}}
+{{--                                src="{{ asset('uploads/Teacher/introClip/1645175677.mp4') }}">--}}
+{{--                        </iframe>--}}
+                    </div>
+                </div>
             </div>
             <div class="col-lg-7 col-xl-9">
                 <div class="card">
