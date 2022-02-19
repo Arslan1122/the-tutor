@@ -10,6 +10,7 @@ Route::group(['prefix'=>'student','middleware'=>['auth','student'],'as'=>'studen
     Route::group(['prefix'=>'profile','as'=>'profile.'],function(){
         Route::get('/',[ProfileController::class,'display'])->name('display');
         Route::get('/edit',[ProfileController::class,'edit'])->name('edit');
-        Route::post('/update/{id}/{username}',[ProfileController::class,'update'])->name('update');
+        Route::post('/update/{id}/',[ProfileController::class,'update'])->name('update');
+        Route::post('/store-bio',[ProfileController::class,'StoreBio'])->name('store');
     });
 });

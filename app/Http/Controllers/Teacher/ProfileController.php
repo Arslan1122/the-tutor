@@ -31,7 +31,7 @@ class ProfileController extends Controller
     }
 
     public function display(){
-        $teacher = User::with(['teacherProfile', 'standards'])->find(Auth::id());
+        $teacher = User::with(['teacherProfile', 'standards','courses','subjects'])->find(Auth::id());
         return view('teacher.profile.index',compact('teacher'));
     }
 
@@ -53,9 +53,9 @@ class ProfileController extends Controller
         $studentProfile=$this->profileService->updateOrCreate($id,$request,'TeacherProfile');
 
         if(json_decode($studentProfile->getcontent())->flag){
-            return redirect()->back()->with('success', 'Profile Updated Successfully!');
+            return redirect()->route('teacher.profile.display')->with('success', 'Profile Updated Successfully!');
         }else{
-            return redirect()->back()->with('error', 'Something Went Wrong!');
+            return redirect()->route('teacher.profile.display')->with('error', 'Something Went Wrong!');
         }
     }
 

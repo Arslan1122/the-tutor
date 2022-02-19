@@ -4,12 +4,16 @@
         <div class="page-header">
             <h4 class="page-title">Profile</h4>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Admin</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Profile</li>
             </ol>
         </div>
         <!--/Page-Header-->
-
+        @if(!\Auth::user()->is_approved)
+            <div class="alert alert-danger">Please ! Complete your profile,Admin will review your profile and approve it within 48 hours. </div>
+        @elseif(\Auth::user()->is_block)
+            <div class="alert alert-danger">You're blocked! Contact Admin for furthur investigation</div>
+        @endif
         <div class="row">
             <div class="col-xl-3 col-lg-4 col-md-12">
                 <div class="card user-pro-list overflow-hidden">
@@ -48,7 +52,7 @@
                                     <td class="py-2 px-0">
                                         <span class="font-weight-semibold w-50">Location </span>
                                     </td>
-                                    <td class="py-2 px-0">{{ $teacher->address }}</td>
+                                    <td class="py-2 px-0">{{ $teacher->teacherProfile->address }}</td>
                                 </tr>
                                 <tr>
                                     <td class="py-2 px-0">
@@ -61,6 +65,18 @@
                                         <span class="font-weight-semibold w-50">Phone </span>
                                     </td>
                                     <td class="py-2 px-0">{{ $teacher->phone_number }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-0">
+                                        <span class="font-weight-semibold w-50">City </span>
+                                    </td>
+                                    <td class="py-2 px-0">{{ $teacher->teacherProfile->city }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-0">
+                                        <span class="font-weight-semibold w-50">Postal Code </span>
+                                    </td>
+                                    <td class="py-2 px-0">{{ $teacher->teacherProfile->postal_code }}</td>
                                 </tr>
                                 </tbody>
                             </table>

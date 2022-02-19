@@ -13,8 +13,10 @@
                 {{$error}}.</div>
     @endforeach
     <!--Page-Header-->
-        @if(!$profile->is_complete)
+        @if(!\Auth::user()->is_approved)
             <div class="alert alert-danger">Please ! Complete your profile,Admin will review your profile and approve it within 48 hours. </div>
+        @elseif(\Auth::user()->is_block)
+            <div class="alert alert-danger">You're blocked! Contact Admin for furthur investigation</div>
         @endif
 
         <div class="row ">
@@ -61,7 +63,7 @@
                 </div>
             </div>
             <div class="col-lg-8">
-                <form class="card" method="post" action="{{route('teacher.profile.update',['id'=>Auth::id(),'username'=>Auth::user()->name])}}" enctype="multipart/form-data">
+                <form class="card" method="post" action="{{route('teacher.profile.update',['id'=>Auth::id()])}}" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="old_image" value="{{@$profile->profile_img}}">
                     <input type="hidden" name="old_clip" value="{{@$profile->intro_clip}}">

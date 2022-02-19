@@ -11,7 +11,7 @@ Route::group(['prefix'=>'teacher','middleware'=>['auth','teacher'],'as'=>'teache
 
         Route::get('/show',[ProfileController::class,'display'])->name('display');
         Route::get('/edit',[ProfileController::class,'edit'])->name('edit');
-        Route::post('/update/{id}/{username}',[ProfileController::class,'update'])->name('update');
+        Route::post('/update/{id}',[ProfileController::class,'update'])->name('update');
         Route::post('/store-bio',[ProfileController::class,'StoreBio'])->name('store');
 
     });
