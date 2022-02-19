@@ -32,7 +32,6 @@ class ProfileController extends Controller
 
     public function display(){
         $teacher = User::with(['teacherProfile', 'standards'])->find(Auth::id());
-        dd($teacher);
         return view('teacher.profile.index',compact('teacher'));
     }
 

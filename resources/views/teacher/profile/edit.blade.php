@@ -29,7 +29,7 @@
                             @csrf
                             <div class="row mb-2">
                                 <div class="col-auto">
-                                    <img class="avatar brround avatar-xl" src="{{ asset('backend/assets/images/users/male/25.jpg') }}" alt="Avatar-img">
+                                    <img class="avatar brround avatar-xl" src="@if(isset(\Auth::user()->teacherProfile->profile_img)) {{ asset(\Auth::user()->teacherProfile->profile_img) }} @else {{ asset('backend/assets/images/users/female/3.jpg') }} @endif" alt="Avatar-img">
                                 </div>
                                 <div class="col">
                                     <h3 class="mb-1 ">{{ \Auth::user()->name }}</h3>

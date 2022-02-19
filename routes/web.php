@@ -19,12 +19,21 @@ Route::get('/', function () {
 });
 
 Route::get('/redirects', function () {
-    if(Auth::user()->is_admin){
+    if(Auth::user()->is_admin)
+    {
         return redirect('/admin/dashboard');
-    }elseif(!Auth::user()->is_admin){
-        if(Auth::user()->hasRole('teacher')){
+    }
+    elseif(!Auth::user()->is_admin){
+
+        if(Auth::user()->hasRole('teacher'))
+        {
+            if(Auth::user()->is_approved){
+                return redirect('/teacher/dashboard');
+            }
             return redirect('teacher/profile/edit');
-        }elseif(Auth::user()->hasRole('student')){
+        }
+
+        elseif(Auth::user()->hasRole('student')){
             return redirect()->route('student.dashboard');
         }
     }
