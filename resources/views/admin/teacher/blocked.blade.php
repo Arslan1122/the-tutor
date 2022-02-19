@@ -2,10 +2,10 @@
 @section('content')
     <div class="side-app">
         <div class="page-header">
-            <h4 class="page-title">Approved Teachers</h4>
+            <h4 class="page-title">Blocked Teachers</h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Teachers</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Approved Teachers</li>
+                <li class="breadcrumb-item active" aria-current="page">blocked teachers</li>
             </ol>
         </div>
         <div class="col-md-12 col-lg-12">

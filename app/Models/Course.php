@@ -10,4 +10,9 @@ class Course extends Model
     use HasFactory;
 
     public $guarded = [];
+
+    public function userCourses()
+    {
+        $this->hasMany(UserCourse::class);
+    }
 }

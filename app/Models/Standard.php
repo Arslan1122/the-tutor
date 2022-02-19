@@ -10,4 +10,9 @@ class Standard extends Model
     use HasFactory;
 
     public $guarded = [];
+
+    public function userStandards()
+    {
+        $this->hasMany(UserStandard::class);
+    }
 }

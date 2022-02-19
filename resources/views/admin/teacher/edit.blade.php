@@ -26,11 +26,16 @@
                         <div class="pro-user mt-3 d-flex justify-content-center align-items-center">
                             @if(!$teacher->is_approved)
                             <div class="btn-list" style="margin-right: 10px">
-                                <a href="{{ route('') }}" class="btn btn-success">Approve Teacher</a>
+                                <a href="{{ route('admin.change.status', ['id' => $teacher->id, 'status' => 1]) }}" class="btn btn-success">Approve Teacher</a>
                             </div>
                             @else
                             <div class="btn-list">
-                                <a href="" class="btn btn-danger">Block Teacher</a>
+                                @if($teacher->is_block == 0)
+                                    <a href="{{ route('admin.change.status', ['id' => $teacher->id, 'status' => 0]) }}" class="btn btn-primary">UnApprove Teacher</a>
+                                    <a href="{{ route('admin.change.block.status', ['id' => $teacher->id, 'status' => 1]) }}" class="btn btn-danger">Block Teacher</a>
+                                @else
+                                    <a href="{{ route('admin.change.block.status', ['id' => $teacher->id, 'status' => 0]) }}" class="btn btn-danger">Un Block Teacher</a>
+                                @endif
                             </div>
                             @endif
                         </div>

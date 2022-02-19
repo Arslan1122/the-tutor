@@ -39,7 +39,6 @@
 <script src="{{asset('backend/assets/plugins/chart/Chart.bundle.js')}}"></script>
 <script src="{{asset('backend/assets/plugins/chart/utils.js')}}"></script>
 
-
 <!-- Datepicker js -->
 <script src="{{asset('backend/assets/plugins/date-picker/spectrum.js')}}"></script>
 <script src="{{asset('backend/assets/plugins/date-picker/jquery-ui.js')}}"></script>
