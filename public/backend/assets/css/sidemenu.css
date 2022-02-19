@@ -477,9 +477,7 @@
 }
 
 .slide-menu li:after {
-  content: '\f10c';
   position: absolute;
-  font-family: "FontAwesome";
   left: 22px;
   top: 10px;
   font-size: 8px;
@@ -499,8 +497,8 @@
 
 .side-menu .slide-menu li a {
   font-size: 13px;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.4);
+  font-weight: 700;
+  color: white;
 }
 
 .slide ul li a {

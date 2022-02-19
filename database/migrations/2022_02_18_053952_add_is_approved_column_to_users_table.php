@@ -15,6 +15,7 @@ class AddIsApprovedColumnToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->boolean('is_approved')->default(0);
+            $table->boolean('is_block')->default(0);
         });
     }
 

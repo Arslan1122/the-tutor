@@ -17,6 +17,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone_number',
+        'is_approved',
+        'is_block'
     ];
 
     protected $hidden = [
@@ -48,4 +51,18 @@ class User extends Authenticatable
         return $this->hasOne(TeacherProfile::class);
     }
 
+    public function courses()
+    {
+        return $this->hasMany(UserCourse::class);
+    }
+
+    public function subjects()
+    {
+        return $this->hasMany(UserSubject::class);
+    }
+
+    public function standards()
+    {
+        return $this->hasMany(UserStandard::class);
+    }
 }

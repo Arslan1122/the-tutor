@@ -14,7 +14,7 @@
 
         <div class="row">
 
-            <div class="col-md-8 col-lg-8">
+            <div class="col-md-12 col-lg-12">
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Courses</h3>
@@ -27,9 +27,9 @@
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Add New Course</h5>
 
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <form action="{{route('course.insert')}}" method="post">
+                                <form action="{{route('admin.course.insert')}}" method="post">
                                     @csrf
                                 <div class="modal-body">
                                     <div class="form-group">
@@ -64,7 +64,7 @@
                                     <td>{{$course->name}}</td>
                                     <td>
                                         <a href="javascript:void 0"data-bs-toggle="modal" data-bs-target="#editCourse-{{$key}}" > <i class="fa fa-pencil text-info"></i> </a>
-                                        <a href="{{route('course.delete',$course->id)}}"> <i class="fa fa-trash text-danger"></i> </a>
+                                        <a href="{{route('admin.course.delete',$course->id)}}"> <i class="fa fa-trash text-danger"></i> </a>
                                     </td>
 
                                 </tr>
@@ -75,7 +75,7 @@
                                                 <h5 class="modal-title" id="exampleModalLabel">Edit  Course Name</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
-                                            <form action="{{route('course.update',$course->id)}}" method="post">
+                                            <form action="{{route('admin.course.update',$course->id)}}" method="post">
                                                 @csrf
                                                 <div class="modal-body">
                                                     <div class="form-group">

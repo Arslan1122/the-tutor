@@ -16,7 +16,7 @@ class UserSubject extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function standard()
+    public function subject()
     {
         return $this->belongsTo(Subject::class, 'subject_id');
     }

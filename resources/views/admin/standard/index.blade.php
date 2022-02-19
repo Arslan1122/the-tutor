@@ -14,7 +14,7 @@
 
         <div class="row">
 
-            <div class="col-md-8 col-lg-8">
+            <div class="col-md-12 col-lg-12">
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Standards</h3>
@@ -29,7 +29,7 @@
 
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <form action="{{route('standard.insert')}}" method="post">
+                                <form action="{{route('admin.standard.insert')}}" method="post">
                                     @csrf
                                 <div class="modal-body">
                                     <div class="form-group">
@@ -64,7 +64,7 @@
                                     <td>{{$standard->name}}</td>
                                     <td>
                                         <a href="javascript:void 0"data-bs-toggle="modal" data-bs-target="#editStandard-{{$key}}" > <i class="fa fa-pencil text-info"></i> </a>
-                                        <a href="{{route('standard.delete',$standard->id)}}"> <i class="fa fa-trash text-danger"></i> </a>
+                                        <a href="{{route('admin.standard.delete',$standard->id)}}"> <i class="fa fa-trash text-danger"></i> </a>
                                     </td>
 
                                 </tr>
@@ -75,7 +75,7 @@
                                                 <h5 class="modal-title" id="exampleModalLabel">Edit  Standard Name</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
-                                            <form action="{{route('standard.update',$standard->id)}}" method="post">
+                                            <form action="{{route('admin.standard.update',$standard->id)}}" method="post">
                                                 @csrf
                                                 <div class="modal-body">
                                                     <div class="form-group">

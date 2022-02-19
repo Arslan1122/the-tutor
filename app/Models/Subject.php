@@ -10,5 +10,11 @@ class Subject extends Model
     use HasFactory;
 
     public $guarded = [];
+
     protected $table='subjects';
+
+    public function userSubjects()
+    {
+        $this->hasMany(UserSubject::class);
+    }
 }
