@@ -29,8 +29,9 @@ Route::get('/redirects', function () {
         {
             if(Auth::user()->is_approved){
                 return redirect('/teacher/dashboard');
+            } else {
+                return redirect('/teacher/profile/edit');
             }
-            return redirect('teacher/profile/edit');
         }
 
         elseif(Auth::user()->hasRole('student')){
