@@ -15,4 +15,19 @@ class Tuition extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function subject()
+    {
+        return $this->belongsTo(Subject::class);
+    }
+
+    public function course()
+    {
+        return $this->belongsTo(Course::class);
+    }
+
+    public function standard()
+    {
+        return $this->belongsTo(Standard::class);
+    }
 }

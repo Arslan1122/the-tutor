@@ -16,6 +16,9 @@ class CreateTuitionsTable extends Migration
         Schema::create('tuitions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('standard_id')->nullable();
+            $table->unsignedBigInteger('subject_id')->nullable();
+            $table->unsignedBigInteger('course_id')->nullable();
             $table->string('title');
             $table->text('description');
             $table->boolean('is_approved')->default(0);

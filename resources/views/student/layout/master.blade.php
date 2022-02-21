@@ -30,6 +30,7 @@
 
 
 @include('common.scripts')
+@yield('scripts')
 </body>
 
 </html>

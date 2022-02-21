@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
+use App\Models\Course;
+use App\Models\Standard;
+use App\Models\Subject;
 use App\Models\Tuition;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,8 +15,11 @@ class TuitionController extends Controller
 
     public function index()
     {
-        $tuitions = Tuition::orderBy('id','desc')->get();
-        return view('student.tuitions.index', compact('tuitions'));
+        $tuitions = Tuition::with(['standard', 'subject','course'])->orderBy('id','desc')->get();
+        $standards = Standard::orderBy('name','asc')->get();
+        $subjects = Subject::orderBy('name','asc')->get();
+        $courses = Course::orderBy('name','asc')->get();
+        return view('student.tuitions.index', compact('tuitions', 'standards','subjects','courses'));
     }
 
 
