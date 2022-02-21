@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\TeacherController;
 use App\Http\Controllers\Admin\AdminPagesController;
 use App\Http\Controllers\Admin\StudentController;
+use App\Http\Controllers\Admin\TuitionController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('admin/login','auth.admin-login');
@@ -52,6 +53,15 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin'], 'as' => 'admin.'
     Route::post('/subject/insert',[AdminPagesController::class,'subjectInsert'])->name('subject.insert');
     Route::post('/subject/update/{id}',[AdminPagesController::class,'subjectUpdate'])->name('subject.update');
     Route::get('/subject/delete/{id}',[AdminPagesController::class,'subjectDelete'])->name('subject.delete');
+
+    //Tuitions
+    Route::group(['prefix' => 'tuitions'], function () {
+        Route::get('/', [TuitionController::class, 'index'])->name('tuitions.index');
+        Route::get('approve/{id}', [TuitionController::class, 'approve'])->name('tuition.approve');
+        Route::get('unapprove/{id}', [TuitionController::class, 'unapprove'])->name('tuition.unapproved');
+        Route::get('approved', [TuitionController::class, 'approvedTuitions'])->name('approved.tuitions');
+        Route::get('unapproved', [TuitionController::class, 'UnApprovedTuitions'])->name('un.approved.tuitions');
+    });
 
 
 });
