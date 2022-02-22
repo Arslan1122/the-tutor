@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix'=>'teacher','middleware'=>['auth','teacher'],'as'=>'teacher.'],function(){
 
-    Route::view('/dashboard','teacher.index');
+    Route::view('/dashboard','teacher.index')->name('dashboard');
 
     Route::group(['prefix'=>'profile','as'=>'profile.'],function(){
 
