@@ -21,6 +21,7 @@ class CreateTuitionsTable extends Migration
             $table->unsignedBigInteger('course_id')->nullable();
             $table->string('title');
             $table->text('description');
+            $table->unsignedBigInteger('pay')->nullable();
             $table->boolean('is_approved')->default(0);
             $table->timestamps();
 

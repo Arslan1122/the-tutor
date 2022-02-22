@@ -81,6 +81,10 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
+                                            <label for="pay" class="form-label">Tuition Fee (Per Month) </label>
+                                            <input type="number" class="form-control" name="pay"  />
+                                        </div>
+                                        <div class="form-group">
                                             <label for="" class="form-label">Tuition Description(what kind of tutor you
                                                 need)</label>
                                             <textarea name="description" id="" class="form-control" cols="30" rows="4"
@@ -104,6 +108,7 @@
                                     <th>ID</th>
                                     <th>Title</th>
                                     <th>Description</th>
+                                    <th>Fee</th>
                                     <th>Status</th>
                                     <th>Action</th>
 
@@ -116,6 +121,7 @@
                                             <td>{{$tuition->id}}</td>
                                             <td>{{$tuition->title}}</td>
                                             <td>{{$tuition->description}}</td>
+                                            <td>{{ $tuition->pay }}</td>
                                             <td>@if($tuition->is_approved)
                                                     <label class="badge badge-success"> Approved </label>
                                                 @else
@@ -205,6 +211,10 @@
                                                                         @endforeach
                                                                     </select>
                                                                 </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="pay" class="form-label">Tuition Fee (Per Month) </label>
+                                                                <input type="number" class="form-control" name="pay" value="{{ $tuition->pay }}"  />
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="" class="form-label">Tuition

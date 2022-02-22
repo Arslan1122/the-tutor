@@ -29,6 +29,7 @@
                                     <th>ID</th>
                                     <th>Title</th>
                                     <th>Description</th>
+                                    <th>Fee</th>
                                     <th>Status</th>
                                     <th>Action</th>
 
@@ -41,6 +42,7 @@
                                             <td>{{$tuition->id}}</td>
                                             <td>{{$tuition->title}}</td>
                                             <td>{{$tuition->description}}</td>
+                                            <td>{{ $tuition->pay }}</td>
                                             <td>@if($tuition->is_approved)
                                                     <label class="badge badge-success"> Approved </label>
                                                 @else
