@@ -20,6 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('phone_number')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->unsignedInteger('no_of_bids')->default(3);
+            $table->boolean('is_subscribed')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });
