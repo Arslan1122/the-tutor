@@ -19,7 +19,10 @@ class User extends Authenticatable
         'password',
         'phone_number',
         'is_approved',
-        'is_block'
+        'is_admin',
+        'is_block',
+        'no_of_bids',
+        'is_subscribed',
     ];
 
     protected $hidden = [
