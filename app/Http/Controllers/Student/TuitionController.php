@@ -7,6 +7,7 @@ use App\Models\Course;
 use App\Models\Standard;
 use App\Models\Subject;
 use App\Models\Tuition;
+use App\Models\TuitionProposal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,17 +36,6 @@ class TuitionController extends Controller
         return redirect()->back()->with('success', 'Tuition Added Successfully !');
     }
 
-    public function show($id)
-    {
-        //
-    }
-
-
-    public function edit($id)
-    {
-        //
-    }
-
     public function update(Request $request, $id)
     {
         $this->validate($request, [
@@ -64,5 +54,12 @@ class TuitionController extends Controller
     {
         Tuition::find($id)->delete();
         return redirect()->back()->with('success', 'Tuition Deleted Successfully !');
+    }
+
+    public function proposals($id)
+    {
+        $tuition = Tuition::with(['subject','standard', 'course'])->find($id);
+        $proposals = TuitionProposal::where('tuition_id', $id)->with(['tuition','teacher'])->get();
+        return view('student.tuitions.proposals', compact('proposals','tuition'));
     }
 }

@@ -120,7 +120,7 @@
                                         <tr>
                                             <td>{{$tuition->id}}</td>
                                             <td>{{$tuition->title}}</td>
-                                            <td>{{$tuition->description}}</td>
+                                            <td>{{ \Illuminate\Support\Str::limit($tuition->description, 50,'.....') }}</td>
                                             <td>{{ $tuition->pay }}</td>
                                             <td>@if($tuition->is_approved)
                                                     <label class="badge badge-success"> Approved </label>
@@ -132,6 +132,10 @@
                                                     <a href="javascript:void 0" class="btn btn-primary"
                                                        data-bs-toggle="modal" data-bs-target="#editTuition-{{$key}}">
                                                         <i class="fa fa-pencil text-white"></i>
+                                                    </a>
+                                                    @else
+                                                    <a href="{{ route('student.tuitions.proposals', $tuition->id) }}" class="btn btn-sm btn-dark">
+                                                        Proposals
                                                     </a>
                                                 @endif
                                                 <a href="{{ route('student.tuitions.delete', $tuition->id) }}"

@@ -8,7 +8,7 @@
     <div class="app-sidebar__user clearfix">
         <div class="dropdown user-pro-body">
             <div>
-                <img src="{{asset('backend/assets/images/users/female/20.jpg')}}" alt="user-img" class="avatar avatar-lg brround">
+                <img src="@if(isset(\Auth::user()->studentProfile->profile_img)) {{ asset(\Auth::user()->studentProfile->profile_img) }} @else {{ asset('backend/assets/images/users/female/3.jpg') }} @endif" alt="user-img" class="avatar avatar-lg brround">
                 <span class="avatar-status profile-status bg-green"></span>
             </div>
             <div class="user-info">

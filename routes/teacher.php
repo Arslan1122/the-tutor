@@ -21,5 +21,6 @@ Route::group(['prefix'=>'teacher','middleware'=>['auth','teacher'],'as'=>'teache
         Route::get('/',[TuitionController::class, 'index'])->name('available.tuitions');
         Route::get('show/{id}', [TuitionController::class, 'show'])->name('tuition.show');
         Route::post('store/bid', [TuitionController::class, 'store'])->name('tuition.store');
+        Route::get('bids', [TuitionController::class, 'bids'])->name('bids');
     });
 });

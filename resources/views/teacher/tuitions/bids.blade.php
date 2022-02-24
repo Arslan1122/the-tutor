@@ -2,10 +2,10 @@
 @section('content')
     <div class="side-app">
         <div class="page-header">
-            <h4 class="page-title">Tuitions List</h4>
+            <h4 class="page-title">My Bids</h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Tuitions</li>
+                <li class="breadcrumb-item active" aria-current="page">bids</li>
             </ol>
         </div>
         <!--/Page-Header-->
@@ -16,7 +16,7 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <div>
-                            <h3 class="card-title">Tuitions</h3>
+                            <h3 class="card-title">Bids on tuitions</h3>
                         </div>
 
                     </div>
@@ -33,15 +33,15 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @if(isset($tuitions) && !empty($tuitions))
-                                    @foreach($tuitions as $key=>$tuition)
+                                @if(isset($bids) && !empty($bids))
+                                    @foreach($bids as $bid)
                                         <tr>
-                                            <td>{{$tuition->id}}</td>
-                                            <td>{{$tuition->title}}</td>
-                                            <td>{{ \Illuminate\Support\Str::limit($tuition->description, 50,'.....') }}</td>
-                                            <td>{{ $tuition->pay }}</td>
+                                            <td>{{$bid->tuition->id}}</td>
+                                            <td>{{$bid->tuition->title}}</td>
+                                            <td>{{ \Illuminate\Support\Str::limit($bid->tuition->description, 50,'.....') }}</td>
+                                            <td>{{ $bid->tuition->pay }}</td>
                                             <td>
-                                                <a href="{{ route('teacher.tuition.show', $tuition->id) }}" class="btn btn-danger"> <i class="fa fa-eye text-white"></i> </a>
+                                                <a href="{{ route('teacher.tuition.show', $bid->tuition->id) }}" class="btn btn-danger"> <i class="fa fa-eye text-white"></i> </a>
                                             </td>
                                         </tr>
                                     @endforeach

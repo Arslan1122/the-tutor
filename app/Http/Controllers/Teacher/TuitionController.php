@@ -57,4 +57,10 @@ class TuitionController extends Controller
         }
         return redirect()->back()->with('success', "Bid Submitted Successfully!");
     }
+
+    public function bids()
+    {
+        $bids = TuitionProposal::where('teacher_id', Auth::id())->with('tuition')->get();
+        return view('teacher.tuitions.bids', compact('bids'));
+    }
 }
