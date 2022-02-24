@@ -61,6 +61,8 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin'], 'as' => 'admin.'
         Route::get('unapprove/{id}', [TuitionController::class, 'unapprove'])->name('tuition.unapproved');
         Route::get('approved', [TuitionController::class, 'approvedTuitions'])->name('approved.tuitions');
         Route::get('unapproved', [TuitionController::class, 'UnApprovedTuitions'])->name('un.approved.tuitions');
+        Route::get('show/{id}', [TuitionController::class, 'show'])->name('tuition.show');
+        Route::get('proposals/{id}', [TuitionController::class, 'proposals'])->name('tuitions.proposals');
     });
 
 

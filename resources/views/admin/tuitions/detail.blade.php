@@ -1,4 +1,4 @@
-@extends('teacher.layout.master')
+@extends('admin.layout.master')
 @section('content')
     <div class="side-app">
         <div class="page-header">
@@ -6,40 +6,6 @@
             <h6>{{ $tuition->created_at->format('d-M-Y') }}</h6>
         </div>
         <!--/Page-Header-->
-        <div class="modal fade" id="teacherBid" tabindex="-1" aria-labelledby="teacherBid"
-             aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="teacherBid">Bid On Tuition</h5>
-
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                    </div>
-                    <form action="{{ route('teacher.tuition.store') }}" method="post">
-                        @csrf
-                        <div class="modal-body">
-                            <input type="hidden" name="tuition_id" value="{{ $tuition->id }}">
-                            <div class="form-group">
-                                <label for="pay" class="form-label">Tuition Fee (Per Month) </label>
-                                <input type="number" class="form-control" name="teacher_price" placeholder="Bid your price"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="" class="form-label">Write your proposal</label>
-                                <textarea name="description" id="" class="form-control" cols="30" rows="4"
-                                          required></textarea>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
-                            </button>
-                            <button type="submit" class="btn btn-primary">Bid</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
         <div class="row">
             <div class="col-xl-3 col-lg-4 col-md-12">
                 <div class="card">
@@ -80,20 +46,18 @@
                                 </tr>
                                 </tbody>
                             </table>
-                            <div class="pro-user mt-3 d-flex justify-content-center align-items-center">
-                                @php
-                                    $proposal  = \App\Models\TuitionProposal::where(['tuition_id' => $tuition->id , 'teacher_id' => \Auth::id()])->first();
-                                @endphp
-                                <div class="btn-list">
-                                    @if(empty($proposal))
-                                    <button type="button" data-bs-toggle="modal"
-                                       data-bs-target="#teacherBid" class="btn btn-primary mt-3">Bid Now</button>
-                                    @else
-                                        <button type="button" class="btn btn-success mt-3">Already Bidded</button>
-                                    @endif
-{{--                                    <a href="" class="btn btn-danger mt-3">Chat Now</a>--}}
-                                </div>
-                            </div>
+                            @if($tuition->is_approved)
+                                <a href="{{ route('admin.tuition.unapproved', $tuition->id) }}" class="btn btn-dark mt-5" title="Block Tuition" >
+                                    <i class="fa fa-times text-white"></i> Block Tuition
+                                </a>
+                                <a href="{{ route('admin.tuitions.proposals', $tuition->id) }}" class="btn btn-primary mt-5" title="Approve Tuition">
+                                    <i class="fa fa-eye text-white"></i>Proposals
+                                </a>
+                            @else
+                                <a href="{{ route('admin.tuition.approve', $tuition->id) }}" class="btn btn-primary mt-5" title="Approve Tuition">
+                                    <i class="fa fa-check text-white"></i>Approve Tuition
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -117,21 +81,21 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class=""><strong>Standards</strong></h5>
-                            <a class="btn btn-sm btn-light me-2 mt-1" href="javascript:void(0)">{{ $tuition->standard->name ?? '' }}</a>
+                        <a class="btn btn-sm btn-light me-2 mt-1" href="javascript:void(0)">{{ $tuition->standard->name ?? '' }}</a>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-body">
                         <h5 class=""><strong>Subjects</strong></h5>
-                            <a class="btn btn-sm btn-light me-2 mt-1" href="javascript:void(0)">{{$tuition->subject->name ?? '' }}</a>
+                        <a class="btn btn-sm btn-light me-2 mt-1" href="javascript:void(0)">{{$tuition->subject->name ?? '' }}</a>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-body">
                         <h5 class=""><strong>Courses</strong></h5>
-                            <a class="btn btn-sm btn-light me-2 mt-1" href="javascript:void(0)">{{ $tuition->course->name ?? '' }}</a>
+                        <a class="btn btn-sm btn-light me-2 mt-1" href="javascript:void(0)">{{ $tuition->course->name ?? '' }}</a>
                     </div>
                 </div>
             </div>

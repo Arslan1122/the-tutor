@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Tuition;
+use App\Models\TuitionProposal;
 use Illuminate\Http\Request;
 
 class TuitionController extends Controller
@@ -40,5 +41,18 @@ class TuitionController extends Controller
             'is_approved' => 0
         ]);
         return redirect()->back()->with('success', 'Tuition Request UnApproved Successfully!');
+    }
+
+    public function show($id)
+    {
+        $tuition = Tuition::where('id',$id)->with(['user','subject','course', 'standard'])->first();
+        return view('admin.tuitions.detail', compact('tuition'));
+    }
+
+    public function proposals($id)
+    {
+        $tuition = Tuition::with(['subject','standard', 'course','isAcceptedproposals'])->find($id);
+        $proposals = TuitionProposal::where('tuition_id', $id)->with(['tuition','teacher'])->get();
+        return view('admin.tuitions.proposals', compact('proposals','tuition'));
     }
 }

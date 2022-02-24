@@ -23,4 +23,8 @@ Route::group(['prefix'=>'student','middleware'=>['auth','student'],'as'=>'studen
         Route::get('/delete/{id}' ,[TuitionController::class, 'destroy'])->name('tuitions.delete');
         Route::get('proposals/{id}', [TuitionController::class, 'proposals'])->name('tuitions.proposals');
     });
+
+    Route::group(['prefix' => 'teacher'], function () {
+        Route::get('hire/{id}', [TuitionController::class, 'hireTeacher'])->name('hire.teacher');
+    });
 });
