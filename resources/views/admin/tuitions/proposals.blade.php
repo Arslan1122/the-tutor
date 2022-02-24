@@ -1,4 +1,4 @@
-@extends('student.layout.master')
+@extends('admin.layout.master')
 @section('content')
     <div class="side-app">
 
@@ -92,10 +92,10 @@
                                     </div>
                                     <div class="col-md-10 col-sm-9">
                                         <p class="mt-4 mt-sm-0">{{ $proposal->teacher->teacherProfile->bio }}</p>
-                                        <a href="" class="btn btn-success">Chat </a>
+{{--                                        <a href="" class="btn btn-success">Chat </a>--}}
                                         <a href="" class="btn btn-info">View Profile </a>
-                                        <a href="{{ route('student.hire.teacher', $proposal->id) }}"
-                                           class="btn btn-primary">Hire Teacher </a>
+{{--                                        <a href="{{ route('student.hire.teacher', $proposal->id) }}"--}}
+{{--                                           class="btn btn-primary">Hire Teacher </a>--}}
                                     </div>
                                 </div>
                             </div>

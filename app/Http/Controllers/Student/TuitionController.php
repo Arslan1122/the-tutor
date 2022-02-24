@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\Job;
 use App\Models\Standard;
 use App\Models\Subject;
 use App\Models\Tuition;
@@ -58,8 +59,23 @@ class TuitionController extends Controller
 
     public function proposals($id)
     {
-        $tuition = Tuition::with(['subject','standard', 'course'])->find($id);
+        $tuition = Tuition::with(['subject','standard', 'course','isAcceptedproposals'])->find($id);
         $proposals = TuitionProposal::where('tuition_id', $id)->with(['tuition','teacher'])->get();
         return view('student.tuitions.proposals', compact('proposals','tuition'));
+    }
+
+    public function hireTeacher($id)
+    {
+        $proposal = TuitionProposal::with(['tuition','teacher'])->find($id);
+        $proposal->update([
+            'is_accepted' => 1
+        ]);
+
+        Job::create([
+            'tuition_proposal_id' => $proposal->id,
+            'user_id' => $proposal->tuition->user_id,
+            'teacher_id' => $proposal->teacher_id
+        ]);
+        return redirect()->back()->with('success', 'Your Tuition Started Successfully !');
     }
 }

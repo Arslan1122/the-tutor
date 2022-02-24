@@ -41,7 +41,7 @@
                                         <tr>
                                             <td>{{$tuition->id}}</td>
                                             <td>{{$tuition->title}}</td>
-                                            <td>{{$tuition->description}}</td>
+                                            <td>{{ \Illuminate\Support\Str::limit($tuition->description, 50,'.....') }}</td>
                                             <td>{{ $tuition->pay }}</td>
                                             <td>@if($tuition->is_approved)
                                                     <label class="badge badge-success"> Approved </label>
@@ -51,6 +51,9 @@
                                             <td>
                                                 <a href="{{ route('admin.tuition.unapproved', $tuition->id) }}" class="btn btn-dark" title="Block Tuition" >
                                                     <i class="fa fa-times text-white"></i>
+                                                </a>
+                                                <a href="{{ route('admin.tuition.show', $tuition->id) }}" class="btn btn-info" title="Show Tuition">
+                                                    <i class="fa fa-eye text-white"></i>
                                                 </a>
                                                 <a href="{{ route('student.tuitions.delete', $tuition->id) }}" class="btn btn-danger" title="delete Tuitions"> <i class="fa fa-trash text-white"></i> </a>
                                             </td>
