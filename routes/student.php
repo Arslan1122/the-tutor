@@ -21,5 +21,6 @@ Route::group(['prefix'=>'student','middleware'=>['auth','student'],'as'=>'studen
         Route::get('/edit/{id}' ,[TuitionController::class, 'edit'])->name('tuitions.edit');
         Route::post('/update/{id}' ,[TuitionController::class, 'update'])->name('tuitions.update');
         Route::get('/delete/{id}' ,[TuitionController::class, 'destroy'])->name('tuitions.delete');
+        Route::get('proposals/{id}', [TuitionController::class, 'proposals'])->name('tuitions.proposals');
     });
 });

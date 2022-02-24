@@ -47,7 +47,7 @@
             <div class="col-xl-3 col-lg-4 col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Personal Details</h4>
+                        <h4 class="card-title">Student Personal Details</h4>
                         <div class="table-responsive user-details">
                             <table class="table mb-0">
                                 <tbody>
@@ -77,9 +77,9 @@
                                 </tr>
                                 <tr>
                                     <td class="py-2 px-0">
-                                        <span class="font-weight-semibold w-50">Postal Code </span>
+                                        <span class="font-weight-semibold w-50">Fee / Month </span>
                                     </td>
-                                    <td class="py-2 px-0">{{ $tuition->user->studentProfile->postal_code }}</td>
+                                    <td class="py-2 px-0">{{ $tuition->pay }}</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -94,7 +94,7 @@
                                     @else
                                         <button type="button" class="btn btn-success mt-3">Already Bidded</button>
                                     @endif
-                                    <a href="" class="btn btn-danger mt-3">Chat Now</a>
+{{--                                    <a href="" class="btn btn-danger mt-3">Chat Now</a>--}}
                                 </div>
                             </div>
                         </div>
