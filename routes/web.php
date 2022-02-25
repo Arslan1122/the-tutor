@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Common\ChatController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -48,3 +49,10 @@ require __DIR__.'/auth.php';
 require __DIR__.'/admin.php';
 require __DIR__.'/student.php';
 require __DIR__.'/teacher.php';
+
+
+Route::group(['middleware'=>'auth'],function(){
+    Route::get('showchat',[ChatController::class,'show']);
+    Route::get('/chatroom/{id}',[ChatController::class,'singleChatBox'])->name('chatroom.single');
+    Route::post('/chatroom/sendMsg',[ChatController::class,'sendMessage'])->name('massage.send');
+});

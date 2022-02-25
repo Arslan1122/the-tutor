@@ -71,7 +71,7 @@
 <script src="{{ asset('backend/assets/plugins/sweet-alert/sweetalert.min.js') }}"></script>
 <script src="{{ asset('backend/assets/js/sweet-alert.js') }}"></script>
 
-
+<script src="https://js.pusher.com/5.0/pusher.min.js"></script>
 <!-- Custom Js-->
 <script src="{{asset('backend/assets/js/admin-custom.js')}}"></script>
 
@@ -81,4 +81,40 @@
     @elseif(\Session::has('error'))
     swal("Error!", "{{ \Session::get('error') }}", "error");
     @endif
+</script>
+<script>
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('59251744d2c0a729dcfb', {
+        cluster: 'ap4'
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(data) {
+        if(my_id == data.from){
+            $('#' + data.to).click();
+        }
+        else if(my_id == data.to){
+
+            if(receiver_id==data.from) {
+                //  alert('receive');
+                //if receiver is selected, reload the selected user
+                $('#' + data.from).click();
+            }
+            else{
+                //if user is not selected then notification to user
+                var pending = parseInt($('#' + data.from).find('.pending').html());
+                if(pending){
+                    //  $('#'+data.from).find('.pending').text(pending+1);
+                    var total=pending+1;
+                    $('#'+data.from).find('.pending').replaceWith('<span class="pending badge badge-primary float-right">'+total+'</span>');
+                }
+                else{
+
+                    $('#'+data.from).append('<span class="pending badge badge-primary float-right">1</span>');
+                }
+            }
+        }
+    });
 </script>
