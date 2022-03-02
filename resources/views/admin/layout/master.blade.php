@@ -1,7 +1,7 @@
 
 <html lang="en">
 @include('common.style')
-
+@stack('form_builder_styles')
 <body class="app sidebar-mini">
 
 
@@ -30,6 +30,7 @@
 
 
 @include('common.scripts')
+@stack('form_builder_scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script>

@@ -14,7 +14,8 @@ return [
     /**
      * Template layout file. This is the path to the layout file your application uses
      */
-    'layout_file' => 'layouts.app',
+//    'layout_file' => 'layouts.app',
+    'layout_file' => 'admin.layout.master',
 
     /**
      * The stack section in the layout file to output js content
