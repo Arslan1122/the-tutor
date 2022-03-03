@@ -11,25 +11,41 @@ jQuery(function() {
         }
     });
 
+    // score option
+    let scoreAttribute = {
+        score: {
+            label: 'Score',
+            value: '0',
+        }
+    };
+
     // create the form editor
     var fbEditor = $(document.getElementById('fb-editor'))
-    var formBuilder 
+    var formBuilder
     var fbOptions = {
         dataType: 'json',
         formData: window._form_builder_content ? window._form_builder_content : '',
         controlOrder: [
-            'header',
-            'paragraph',
+            // 'header',
+            // 'paragraph',
             'text',
             'textarea',
             'select',
             'number',
             'date',
-            'autocomplete',
-            'file',
+            // 'autocomplete',
+            // 'file',
         ],
         disableFields: [
             'button', // buttons are not needed since we are the one handling the submission
+            'autocomplete',
+            'file',
+            'header',
+            'paragraph',
+            'hidden',
+            'checkbox-group',
+            'radio-group',
+            'starRating',
         ],  // field types that should not be shown
         disabledAttrs: [
             // 'access',
@@ -66,6 +82,17 @@ jQuery(function() {
         },
     }
 
+    // custom code
+    const allowedFields = fbOptions.controlOrder;
+    let userAttrs = {};
+
+    allowedFields.forEach(function (item, index) {
+        userAttrs[item] = scoreAttribute;
+    });
+
+    fbOptions.typeUserAttrs = userAttrs;
+
+    // initialize formBuilder with options
     formBuilder = fbEditor.formBuilder(fbOptions)
 
     var fbClearBtn = $('.fb-clear-btn')
@@ -76,7 +103,7 @@ jQuery(function() {
     fbClearBtn.click(function(e) {
         e.preventDefault()
 
-        if (! formBuilder.actions.getData().length) return 
+        if (! formBuilder.actions.getData().length) return
 
         sConfirm("Are you sure you want to clear all fields from the form?", function() {
             formBuilder.actions.clearFields()
@@ -94,7 +121,7 @@ jQuery(function() {
         var form = $('#createFormForm')
 
         // make sure the form is valid
-        if ( ! form.parsley().validate() ) return 
+        if ( ! form.parsley().validate() ) return
 
         // make sure the form builder is not empty
         if (! formBuilder.actions.getData().length) {
@@ -137,7 +164,7 @@ jQuery(function() {
                 fbClearBtn.removeAttr('disabled')
 
                 if (response.success) {
-                    // the form has been created 
+                    // the form has been created
                     // send the user to the form index page
                     swal({
                         title: "Form Saved!",

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\{FormController, RenderFormController};
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -16,7 +17,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('/');
+
+Route::get('/home', function () {
+    return view('welcome');
+})->name('home');
 
 Route::get('/redirects', function () {
     if(Auth::user()->is_admin)
@@ -59,9 +64,9 @@ Route::middleware('web')
         /**
          * Public form url
          */
-        Route::get('/form/{identifier}', 'RenderFormController@render')->name('form.render');
-        Route::post('/form/{identifier}', 'RenderFormController@submit')->name('form.submit');
-        Route::get('/form/{identifier}/feedback', 'RenderFormController@feedback')->name('form.feedback');
+        Route::get('/form/{identifier}', [RenderFormController::class, 'render'])->name('form.render');
+        Route::post('/form/{identifier}', [RenderFormController::class, 'submit'])->name('form.submit');
+        Route::get('/form/{identifier}/feedback', [RenderFormController::class, 'feedback'])->name('form.feedback');
 
         /**
          * My submission routes
@@ -80,5 +85,11 @@ Route::middleware('web')
         /**
          * Form management routes
          */
-        Route::resource('/forms', 'FormController');
+        Route::get('/forms', [FormController::class, 'index'])->name('forms.index');
+        Route::get('/forms/create', [FormController::class, 'create'])->name('forms.create');
+        Route::post('/forms', [FormController::class, 'store'])->name('forms.store');
+        Route::get('/forms/{form}', [FormController::class, 'show'])->name('forms.show');
+        Route::get('/forms/{form}/edit', [FormController::class, 'edit'])->name('forms.edit');
+        Route::patch('/forms/{form}', [FormController::class, 'update'])->name('forms.update');
+        Route::delete('/forms/{form}', [FormController::class, 'destroy'])->name('forms.destroy');
     });
