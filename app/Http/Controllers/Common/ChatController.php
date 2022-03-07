@@ -26,6 +26,7 @@ class ChatController extends Controller
            where users.id !=" . $loginUser . " group by users.id, users.name,users.is_admin,teacher_profiles.profile_img,student_img
            ORDER BY unread DESC");
 
+
             return view('common.chatroom.index', compact('users'));
 
 
@@ -41,7 +42,7 @@ class ChatController extends Controller
              ->leftJoin('teacher_profiles','users.id','=','teacher_profiles.user_id')
              ->leftJoin('student_profiles','users.id','=','student_profiles.user_id')
             ->select('users.id', 'users.name','users.is_admin', 'teacher_profiles.profile_img','student_profiles.profile_img as student_img' )
-            ->where('id', $id)
+            ->where('users.id', $id)
             ->first();
         $messages = ChatRoom::with('user')->where(function ($query) use ($id, $my_id) {
             $query->where('from', $my_id)->where('to', $id);
@@ -77,7 +78,7 @@ class ChatController extends Controller
         $msg->save();
 
         $options = array(
-            'cluster' => 'ap4',
+            'cluster' => env('PUSHER_APP_CLUSTER'),
             'useTLS' => true
         );
         $pusher = new pusher(
