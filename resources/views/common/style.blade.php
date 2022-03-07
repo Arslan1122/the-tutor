@@ -12,7 +12,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="https://spruko.com/demo/edomi/Edomi/assets/images/brand/favicon.ico" />
 
     <!-- Title -->
-    <title>Edomi - Online Education & Learning Courses HTML CSS Responsive Template</title>
+    <title>The Tutor - Online Education & Learning Courses</title>
 
     <!-- Bootstrap css -->
     <link href="{{asset('backend/assets/plugins/bootstrap/css/bootstrap.css')}}" rel="stylesheet" />

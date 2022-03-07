@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta content="Edomi - Online Education & Learning Courses HTML CSS Responsive Template" name="description">
+    <meta content="The Tutor - Online Education & Learning Courses" name="description">
     <meta content="Spruko Technologies Private Limited" name="author">
     <meta name="keywords" content="html , html dir ,  website template, bootstrap 5  template,  bootstrap template, admin panel template , admin panel , html5 , academy training course css template, classes online training website templates, courses training html5 template design, education training rwd simple template, educational learning management jquery html, elearning bootstrap education template, professional training center bootstrap html, institute coaching mobile responsive template, marketplace html template premium, learning management system jquery html, clean online course teaching directory template, online learning course management system, online course website template css html, premium lms training web template, training course responsive website"/>
 
@@ -12,7 +12,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="https://spruko.com/demo/edomi/Edomi/assets/images/brand/favicon.ico" />
 
     <!-- Title -->
-    <title>Edomi - Online Education & Learning Courses HTML CSS Responsive Template</title>
+    <title>The Tutor - Online Education & Learning Courses</title>
 
     <!-- Bootstrap css -->
     <link href="{{asset('backend/assets/plugins/bootstrap/css/bootstrap.css')}}" rel="stylesheet" />

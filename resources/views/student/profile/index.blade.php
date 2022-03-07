@@ -23,8 +23,8 @@
 												<span class="avatar-status bg-green"></span>
 											</span>
                             <div class="pro-user mt-3">
-                                <h5 class="pro-user-username text-dark mb-1 fs-16">{{ $student->name }}</h5>
-                                <h6 class="pro-user-desc text-muted fs-12">{{ $student->email }}</h6>
+                                <h5 class="pro-user-username text-dark mb-1 fs-16">{{ @$student->name }}</h5>
+                                <h6 class="pro-user-desc text-muted fs-12">{{ @$student->email }}</h6>
                             </div>
                         </div>
                         <div class="pro-user mt-3 d-flex justify-content-center align-items-center">
@@ -46,37 +46,37 @@
                                     <td class="py-2 px-0">
                                         <span class="font-weight-semibold w-50">Name </span>
                                     </td>
-                                    <td class="py-2 px-0">{{ $student->name }}</td>
+                                    <td class="py-2 px-0">{{ @$student->name }}</td>
                                 </tr>
                                 <tr>
                                     <td class="py-2 px-0">
                                         <span class="font-weight-semibold w-50">Location </span>
                                     </td>
-                                    <td class="py-2 px-0">{{ $student->studentProfile->address }}</td>
+                                    <td class="py-2 px-0">{{ @$student->studentProfile->address }}</td>
                                 </tr>
                                 <tr>
                                     <td class="py-2 px-0">
                                         <span class="font-weight-semibold w-50">Email </span>
                                     </td>
-                                    <td class="py-2 px-0">{{ $student->email }}</td>
+                                    <td class="py-2 px-0">{{ @$student->email }}</td>
                                 </tr>
                                 <tr>
                                     <td class="py-2 px-0">
                                         <span class="font-weight-semibold w-50">Phone </span>
                                     </td>
-                                    <td class="py-2 px-0">{{ $student->phone_number }}</td>
+                                    <td class="py-2 px-0">{{ @$student->phone_number }}</td>
                                 </tr>
                                 <tr>
                                     <td class="py-2 px-0">
                                         <span class="font-weight-semibold w-50">City </span>
                                     </td>
-                                    <td class="py-2 px-0">{{ $student->studentProfile->city }}</td>
+                                    <td class="py-2 px-0">{{ @$student->studentProfile->city }}</td>
                                 </tr>
                                 <tr>
                                     <td class="py-2 px-0">
                                         <span class="font-weight-semibold w-50">Postal Code </span>
                                     </td>
-                                    <td class="py-2 px-0">{{ $student->studentProfile->postal_code }}</td>
+                                    <td class="py-2 px-0">{{ @$student->studentProfile->postal_code }}</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -87,7 +87,7 @@
                     <div class="card-body">
                         <h4 class="card-title">Introduction video</h4>
                         <video width="280" height="200" autoplay controls>
-                            <source src="{{ asset($student->studentProfile->intro_clip) }}" type="video/mp4">
+                            <source src="{{ asset(@$student->studentProfile->intro_clip) }}" type="video/mp4">
                         </video>
                         {{--                        <iframe width="280" height="200"--}}
                         {{--                                src="{{ asset('uploads/Teacher/introClip/1645175677.mp4') }}">--}}
@@ -104,7 +104,7 @@
                                     <h5 class="mb-3"><strong>Biography</strong></h5>
                                 </div>
                                 <p>
-                                    {{ $student->studentProfile->bio }}
+                                    {{ @$student->studentProfile->bio }}
                                 </p>
                             </div>
                         </div>
@@ -114,7 +114,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class=""><strong>Standards</strong></h5>
-                        @forelse($student->standards as $standard)
+                        @forelse(@$student->standards as $standard)
                             <a class="btn btn-sm btn-light me-2 mt-1" href="javascript:void(0)">{{ $standard->standard->name }}</a>
                         @empty
                             <p>No Standards Added</p>
@@ -125,7 +125,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class=""><strong>Subjects</strong></h5>
-                        @forelse($student->subjects as $subject)
+                        @forelse(@$student->subjects as $subject)
                             <a class="btn btn-sm btn-light me-2 mt-1" href="javascript:void(0)">{{$subject->subject->name }}</a>
                         @empty
                             <p>No Standards Added</p>
@@ -136,7 +136,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class=""><strong>Courses</strong></h5>
-                        @forelse($student->courses as $course)
+                        @forelse(@$student->courses as $course)
                             <a class="btn btn-sm btn-light me-2 mt-1" href="javascript:void(0)">{{ $course->course->name }}</a>
                         @empty
                             <p>No Standards Added</p>

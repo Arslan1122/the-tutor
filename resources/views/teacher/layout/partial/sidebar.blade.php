@@ -2,7 +2,7 @@
 <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
 <aside class="app-sidebar doc-sidebar">
     <a class="header-brand sidemenu-header-brand" href="/">
-        <img src="{{asset('backend/assets/images/brand/logo-white.png')}}" class="header-brand-img desktop-logo" alt="Lmslist logo">
+        <img src="{{asset('backend/assets/images/brand/logo1.png')}}" class="header-brand-img desktop-logo" alt="Lmslist logo">
         <img src="{{asset('backend/assets/images/brand/favicon.png')}}" class="header-brand-img mobile-logo" alt="Lmslist logo">
     </a>
     <div class="app-sidebar__user clearfix">
