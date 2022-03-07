@@ -224,6 +224,6 @@ class FormController extends Controller
         // dispatch the event
         event(new FormDeleted($form));
 
-        return back()->with('success', "'{$form->name}' deleted.");
+        return redirect()->back()->with('success', "Form Deleted Successfully");
     }
 }

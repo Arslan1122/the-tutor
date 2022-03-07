@@ -20,6 +20,10 @@
     <!-- Sidemenu Css -->
     <link href="{{asset('backend/assets/css/sidemenu.css')}}" rel="stylesheet" />
 
+    <!-- Notifications  Css -->
+    <link href="{{ asset('backend/assets/plugins/notify/css/jquery.growl.css') }}" rel="stylesheet" />
+    <link href="{{ asset('backend/assets/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
+
     <!-- Dashboard Css -->
     <link href="{{asset('backend/assets/css/style.css')}}" rel="stylesheet" />
     <link href="{{asset('backend/assets/css/admin-custom.css')}}" rel="stylesheet" />

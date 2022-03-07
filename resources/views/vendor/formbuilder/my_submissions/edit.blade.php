@@ -4,13 +4,13 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card rounded-0">
+            <div class="card rounded-0" style="margin-top:7%">
                 <div class="card-header">
                     <h5 class="card-title">
                         {{ $pageTitle }}
 
                         <a href="{{ route('formbuilder::my-submissions.index') }}" class="btn btn-primary float-md-right btn-sm" title="Back To My Submissions">
-                            <i class="fa fa-arrow-left"></i> 
+                            <i class="fa fa-arrow-left"></i>
                         </a>
                     </h5>
                 </div>
@@ -18,7 +18,7 @@
                 <form action="{{ route('formbuilder::my-submissions.update', $submission->id) }}" method="POST" id="submitForm" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-                    
+
                     <div class="card-body">
                         <div id="fb-render"></div>
                     </div>

@@ -1,4 +1,17 @@
-@extends(config('formbuilder.layout_file', 'layouts.app'))
+@php
+    if(Auth::user()->hasRole("student")){
+    $extnd='student.layout.master';
+}
+
+        elseif(Auth::user()->hasRole("teacher")){
+     $extnd='teacher.layout.master';
+        }
+
+        else{
+            $extnd='admin.layout.master';
+        }
+@endphp
+@extends($extnd)
 
 @prepend(config('formbuilder.layout_js_stack', 'scripts'))
 	<script type="text/javascript">

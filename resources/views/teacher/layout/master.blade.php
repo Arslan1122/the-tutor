@@ -1,6 +1,6 @@
 <html lang="en">
 @include('common.style')
-
+@stack('form_builder_styles')
 <body class="app sidebar-mini">
 
 
@@ -11,7 +11,6 @@
        @include('teacher.layout.partial.header')
 
        @include('teacher.layout.partial.sidebar')
-
         <!--App-Content-->
         <div class="app-content my-3 my-md-5">
             @if(!\Auth::user()->is_subscribed && \Auth::user()->no_of_bids != 0)
@@ -42,10 +41,10 @@
     @include('teacher.layout.partial.footer')
 </div>
 
-
+@stack('form_builder_scripts')
 @include('common.scripts')
-
 @yield('scripts')
+
 </body>
 
 </html>
