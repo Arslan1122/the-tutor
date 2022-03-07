@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\{FormController, RenderFormController};
+use App\Http\Controllers\Common\ChatController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -93,3 +94,9 @@ Route::middleware('web')
         Route::patch('/forms/{form}', [FormController::class, 'update'])->name('forms.update');
         Route::delete('/forms/{form}', [FormController::class, 'destroy'])->name('forms.destroy');
     });
+
+Route::group(['middleware'=>'auth'],function(){
+    Route::get('showchat',[ChatController::class,'show']);
+    Route::get('/chatroom/{id}',[ChatController::class,'singleChatBox'])->name('chatroom.single');
+    Route::post('/chatroom/sendMsg',[ChatController::class,'sendMessage'])->name('massage.send');
+});

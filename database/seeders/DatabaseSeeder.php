@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder
             TeacherSeeder::class,
             CourseSeeder::class,
             SubjectSeeder::class,
-            StandardSeeder::class
+            StandardSeeder::class,
+            ChatRoomSeeder::class
         ]);
     }
 }
