@@ -4,7 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ff7bbc1e07caa0d56cda1ca0828fe166",
+
+    "content-hash": "d9a2a7c279e5faa7540572bb6908ae28",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1046,6 +1047,48 @@
                 }
             ],
             "time": "2021-12-16T16:49:26+00:00"
+        },
+        {
+            "name": "jazmy/jaz-form-builder",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jazmy/laravel-formbuilder.git",
+                "reference": "685986d6dc2dcf9a8003910a0f0d47a36aaa3d40"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jazmy/laravel-formbuilder/zipball/685986d6dc2dcf9a8003910a0f0d47a36aaa3d40",
+                "reference": "685986d6dc2dcf9a8003910a0f0d47a36aaa3d40",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "jazmy\\FormBuilder\\FormBuilderServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "jazmy\\FormBuilder\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Jasmine Robinson",
+                    "email": "jaz@jazmy.com"
+                }
+            ],
+            "description": "Laravel Package for Creating a Drag-and-Drop Form Builder Using JQuery Form Builder",
+            "support": {
+                "issues": "https://github.com/jazmy/laravel-formbuilder/issues",
+                "source": "https://github.com/jazmy/laravel-formbuilder/tree/master"
+            },
+            "time": "2020-10-08T22:28:36+00:00"
         },
         {
             "name": "laravel/framework",
@@ -8311,12 +8354,14 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "jazmy/jaz-form-builder": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.0.0"
 }
