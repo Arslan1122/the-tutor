@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\FormSubmissionDetail;
 use jazmy\FormBuilder\Helper;
 use jazmy\FormBuilder\Models\Form;
 use jazmy\FormBuilder\Models\Submission;
@@ -88,5 +89,16 @@ class SubmissionController extends Controller
         return redirect()
             ->route('formbuilder::forms.submissions.index', $form_id)
             ->with('success', 'Submission successfully deleted.');
+    }
+
+    public function storeScore(Request $request)
+    {
+        $input = $request->except('_token');
+        foreach ($input as $key => $score) {
+            $detail = FormSubmissionDetail::where('name', $key)->first();
+            $detail->update(['gained_score' => $score]);
+        }
+
+        return redirect()->back()->with('success', 'Score Added Successfully ! ');
     }
 }

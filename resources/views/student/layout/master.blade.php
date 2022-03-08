@@ -1,6 +1,7 @@
 
 <html lang="en">
 @include('common.style')
+@yield('styles')
 @stack('form_builder_styles')
 <body class="app sidebar-mini">
 

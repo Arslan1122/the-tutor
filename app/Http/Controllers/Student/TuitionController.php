@@ -9,6 +9,7 @@ use App\Models\Standard;
 use App\Models\Subject;
 use App\Models\Tuition;
 use App\Models\TuitionProposal;
+use App\Models\TuitionRating;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -90,5 +91,17 @@ class TuitionController extends Controller
         $tuition = Tuition::with(['isAcceptedproposals'])->find($id);
         $proposals = TuitionProposal::where(['tuition_id' => $id, 'is_accepted' => 1])->with(['tuition','teacher'])->get();
         return view('student.tuitions.active-tuition-detail', compact('tuition','proposals'));
+    }
+
+    public function completeTuition(Request  $request)
+    {
+        Tuition::find($request->id)->update(['is_complete' => 1]);
+        TuitionRating::create([
+            'user_id' => Auth::id(),
+            'teacher_id' => $request->teacherId,
+            'tuition_id' => $request->id,
+            'rating' => $request->rating,
+            'review' => $request->review
+        ]);
     }
 }

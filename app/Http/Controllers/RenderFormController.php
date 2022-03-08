@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\FormSubmissionDetail;
 use jazmy\FormBuilder\Helper;
 use jazmy\FormBuilder\Models\Form;
 use Illuminate\Http\Request;
@@ -63,10 +64,18 @@ class RenderFormController extends Controller
 
             $user_id = auth()->user()->id ?? null;
 
-            $form->submissions()->create([
+            $sId = $form->submissions()->create([
                 'user_id' => $user_id,
                 'content' => $input,
             ]);
+
+            foreach ($input as $key => $value) {
+                FormSubmissionDetail::create([
+                    'form_submission_id' => $sId->id,
+                    'name' => $key,
+                    'value' => $value
+                ]);
+            }
 
             DB::commit();
 

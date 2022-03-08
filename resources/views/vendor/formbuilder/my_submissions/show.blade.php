@@ -34,6 +34,7 @@
                 </div>
 
                 <ul class="list-group list-group-flush">
+                    @php $score = 0; $total = 0;@endphp
                     @foreach($form_headers as $header)
                         <li class="list-group-item">
                             <strong>{{ $header['label'] ?? title_case($header['name']) }}: </strong>
@@ -41,9 +42,20 @@
                                 {{ $submission->renderEntryContent($header['name'], $header['type']) }}
                             </span>
                         </li>
+                        @php
+                            $details = \App\Models\FormSubmissionDetail::where('name', $header['name'])->pluck('gained_score');
+
+                            $score += $details[0];
+                            $total += $header['score'];
+                        @endphp
                     @endforeach
                 </ul>
             </div>
+            @if($score == 0)
+                <div class="font-weight-bold alert alert-danger"> Wait for your remarks! </div>
+            @else
+            <div class="font-weight-bold alert alert-success"> Total Score : {{$score}} / {{ $total }} </div>
+            @endif
         </div>
 
         <div class="col-md-4">

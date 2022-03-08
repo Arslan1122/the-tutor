@@ -83,6 +83,8 @@ Route::middleware('web')
                 Route::resource('/submissions', 'SubmissionController');
             });
 
+        Route::post('score', [\App\Http\Controllers\SubmissionController::class, 'storeScore'])->name('store.score');
+
         /**
          * Form management routes
          */

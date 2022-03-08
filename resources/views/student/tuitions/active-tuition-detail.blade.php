@@ -1,4 +1,11 @@
 @extends('student.layout.master')
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('backend/assets/plugins/jquery-bar-rating/dist/themes/bars-horizontal.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/plugins/jquery-bar-rating/dist/themes/fontawesome-stars.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/plugins/jquery-bar-rating/dist/themes/css-stars.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/plugins/jquery-bar-rating/dist/themes/bootstrap-stars.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/plugins/jquery-bar-rating/dist/themes/fontawesome-stars-o.css') }}">
+@endsection
 @section('content')
     <div class="side-app">
 
@@ -95,9 +102,57 @@
                                         <a href="" class="btn btn-success">Chat </a>
                                         <a href="" class="btn btn-info">View Profile </a>
                                         <a href="{{ route('student.complete.tuition', $proposal->id) }}"
-                                           class="btn btn-primary">Complete </a>
+                                           class="btn btn-primary" data-bs-toggle="modal"
+                                           data-bs-target="#completeTuition">Complete Tuition</a>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="completeTuition" tabindex="-1" aria-labelledby="exampleModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Complete Tuition</h5>
+
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <form action="{{route('student.complete.tuition')}}" method="post">
+                                    @csrf
+                                    <input type="hidden" value="{{ $proposal->teacher_id }}" name="teacherId">
+                                    <input type="hidden" value="{{ $proposal->tuition_id }}" name="id">
+                                    <div class="modal-body">
+                                        <label for="" class="form-label">Experience with your teacher</label>
+                                        <div class="box box-example-1to10">
+                                            <div class="box-body">
+                                                <select id="example-1to10" name="rating" autocomplete="off">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7" selected="selected">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="" class="form-label">Write Review</label>
+                                            <textarea name="review" id="" class="form-control" cols="30" rows="4"
+                                                      required></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                        </button>
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -107,4 +162,13 @@
             <div class="alert alert-success font-weight-bold text-center">Congratulations! This Tuition is Assigned.</div>
         @endif
     </div>
+@endsection
+
+@section('scripts')
+    <!-- Jquery-bar-rating Js-->
+    <script src="{{ asset('backend/assets/plugins/jquery-bar-rating/jquery.barrating.js') }}"></script>
+    <script src="{{ asset('backend/assets/plugins/jquery-bar-rating/js/rating.js') }}"></script>
+
+    <!--Jquery-bar-rating js-->
+    <script src="{{ asset('backend/assets/plugins/jquery-bar-rating/js/examples.js') }}"></script>
 @endsection

@@ -27,16 +27,33 @@
                     </h5>
                 </div>
 
+                <form method="POST" action="{{ route('formbuilder::store.score') }}" >
+                    @csrf
                 <ul class="list-group list-group-flush">
+                    @php $score = 0; $total = 0;@endphp
                     @foreach($form_headers as $header)
+
                         <li class="list-group-item">
-                            <strong>{{ $header['label'] ?? title_case($header['name']) }}: </strong>
+                            <strong>{{ $header['label'] ?? title_case($header['name']) }}: </strong><br />
                             <span class="float-right">
                                 {{ $submission->renderEntryContent($header['name'], $header['type']) }}
                             </span>
+                            <div class="mt-4">
+                                <label>
+                                    Add Score <b>({{ $header['score'] }})</b>
+                                </label>
+                                @php
+                                    $details = \App\Models\FormSubmissionDetail::where('name', $header['name'])->pluck('gained_score');
+                                    $score += $details[0];
+                                    $total += $header['score'];
+                                @endphp
+                                 <input type="number" name="{{$header['name']}}" value="{{ $details[0] }}" class="form-control"></div>
                         </li>
                     @endforeach
                 </ul>
+                    <button type="submit" class="btn btn-success">SUBMIT</button>
+                </form>
+                <div class="font-weight-bold"> Total Score : {{$score}} / {{ $total }} </div>
             </div>
         </div>
 
