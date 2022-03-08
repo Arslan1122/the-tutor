@@ -25,6 +25,7 @@ Route::group(['prefix'=>'student','middleware'=>['auth','student'],'as'=>'studen
         Route::get('active', [TuitionController::class, 'activeTuitions'])->name('active.tuitions');
         Route::get('active/detail/{id}', [TuitionController::class, 'activeTuitionDetail'])->name('active.tuitions.detail');
         Route::post('complete/tuition', [TuitionController::class, 'completeTuition'])->name('complete.tuition');
+        Route::get('completed', [TuitionController::class, 'completedTuitions'])->name('completed.tuitions');
     });
 
     Route::group(['prefix' => 'teacher'], function () {

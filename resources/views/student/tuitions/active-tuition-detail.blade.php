@@ -101,9 +101,11 @@
                                         <p class="mt-4 mt-sm-0">{{ $proposal->description }}</p>
                                         <a href="" class="btn btn-success">Chat </a>
                                         <a href="" class="btn btn-info">View Profile </a>
-                                        <a href="{{ route('student.complete.tuition', $proposal->id) }}"
+                                        @if($tuition->is_completed == 0)
+                                        <a href=""
                                            class="btn btn-primary" data-bs-toggle="modal"
                                            data-bs-target="#completeTuition">Complete Tuition</a>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -128,13 +130,13 @@
                                         <div class="box box-example-1to10">
                                             <div class="box-body">
                                                 <select id="example-1to10" name="rating" autocomplete="off">
-                                                    <option value="1">1</option>
+                                                    <option value="1" selected="selected">1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
                                                     <option value="4">4</option>
                                                     <option value="5">5</option>
                                                     <option value="6">6</option>
-                                                    <option value="7" selected="selected">7</option>
+                                                    <option value="7">7</option>
                                                     <option value="8">8</option>
                                                     <option value="9">9</option>
                                                     <option value="10">10</option>
@@ -156,6 +158,42 @@
                             </div>
                         </div>
                     </div>
+                    @if($review)
+                    <div class="col-lg-6 col-xl-6 col-md-12 col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Your Review</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="text-center">
+                                            <div class="box box-example-1to1">
+                                                <div class="box-body">
+                                                    <select id="example-1to1" name="rating" autocomplete="off">
+                                                        <option value="1" @if($review->rating == 1)  selected @endif>1</option>
+                                                        <option value="2" @if($review->rating == 2)  selected @endif>2</option>
+                                                        <option value="3" @if($review->rating == 3)  selected @endif>3</option>
+                                                        <option value="4" @if($review->rating == 4)  selected @endif>4</option>
+                                                        <option value="5" @if($review->rating == 5)  selected @endif>5</option>
+                                                        <option value="6" @if($review->rating == 6)  selected @endif>6</option>
+                                                        <option value="7" @if($review->rating == 7)  selected @endif>7</option>
+                                                        <option value="8" @if($review->rating == 8)  selected @endif>8</option>
+                                                        <option value="9" @if($review->rating == 9)  selected @endif>9</option>
+                                                        <option value="10" @if($review->rating == 10)  selected @endif>10</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <p>{{ $review->review }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
                 @endforeach
             </div>
         @else

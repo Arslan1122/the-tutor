@@ -80,9 +80,19 @@ class TuitionController extends Controller
         return redirect()->back()->with('success', 'Your Tuition Started Successfully !');
     }
 
+    public function completedTuitions()
+    {
+        $tuitions = Tuition::where('user_id',Auth::id())
+            ->where('is_completed', 1)
+            ->whereHas('isAcceptedproposals')->with('isAcceptedproposals.teacher')->get();
+        return view('student.tuitions.my-tuitions', compact('tuitions'));
+    }
+
     public function activeTuitions()
     {
-        $tuitions = Tuition::where('user_id',Auth::id())->whereHas('isAcceptedproposals')->with('isAcceptedproposals.teacher')->get();
+        $tuitions = Tuition::where('user_id',Auth::id())
+            ->where('is_completed', 0)
+            ->whereHas('isAcceptedproposals')->with('isAcceptedproposals.teacher')->get();
         return view('student.tuitions.my-tuitions', compact('tuitions'));
     }
 
@@ -90,12 +100,13 @@ class TuitionController extends Controller
     {
         $tuition = Tuition::with(['isAcceptedproposals'])->find($id);
         $proposals = TuitionProposal::where(['tuition_id' => $id, 'is_accepted' => 1])->with(['tuition','teacher'])->get();
-        return view('student.tuitions.active-tuition-detail', compact('tuition','proposals'));
+        $review = TuitionRating::where('tuition_id', $tuition->id)->first();
+        return view('student.tuitions.active-tuition-detail', compact('tuition','proposals','review'));
     }
 
     public function completeTuition(Request  $request)
     {
-        Tuition::find($request->id)->update(['is_complete' => 1]);
+        Tuition::find($request->id)->update(['is_completed' => 1]);
         TuitionRating::create([
             'user_id' => Auth::id(),
             'teacher_id' => $request->teacherId,
@@ -103,5 +114,6 @@ class TuitionController extends Controller
             'rating' => $request->rating,
             'review' => $request->review
         ]);
+        return redirect()->back()->with('success','review given successfully !');
     }
 }
