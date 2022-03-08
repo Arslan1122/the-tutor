@@ -22,6 +22,8 @@ Route::group(['prefix'=>'student','middleware'=>['auth','student'],'as'=>'studen
         Route::post('/update/{id}' ,[TuitionController::class, 'update'])->name('tuitions.update');
         Route::get('/delete/{id}' ,[TuitionController::class, 'destroy'])->name('tuitions.delete');
         Route::get('proposals/{id}', [TuitionController::class, 'proposals'])->name('tuitions.proposals');
+        Route::get('active', [TuitionController::class, 'activeTuitions'])->name('active.tuitions');
+        Route::get('active/detail/{id}', [TuitionController::class, 'activeTuitionDetail'])->name('active.tuitions.detail');
     });
 
     Route::group(['prefix' => 'teacher'], function () {

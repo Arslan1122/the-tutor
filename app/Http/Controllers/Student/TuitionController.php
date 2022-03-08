@@ -78,4 +78,17 @@ class TuitionController extends Controller
         ]);
         return redirect()->back()->with('success', 'Your Tuition Started Successfully !');
     }
+
+    public function activeTuitions()
+    {
+        $tuitions = Tuition::where('user_id',Auth::id())->whereHas('isAcceptedproposals')->with('isAcceptedproposals.teacher')->get();
+        return view('student.tuitions.my-tuitions', compact('tuitions'));
+    }
+
+    public function activeTuitionDetail($id)
+    {
+        $tuition = Tuition::with(['isAcceptedproposals'])->find($id);
+        $proposals = TuitionProposal::where(['tuition_id' => $id, 'is_accepted' => 1])->with(['tuition','teacher'])->get();
+        return view('student.tuitions.active-tuition-detail', compact('tuition','proposals'));
+    }
 }

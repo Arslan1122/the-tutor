@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\StudentProfile;
 use App\Models\TeacherProfile;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -49,6 +50,10 @@ class RegisteredUserController extends Controller
 
         if($request->role == "teacher") {
             $profile = new TeacherProfile();
+            $profile->user_id = $user->id;
+            $profile->save();
+        } else {
+            $profile = new StudentProfile();
             $profile->user_id = $user->id;
             $profile->save();
         }

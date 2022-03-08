@@ -153,15 +153,6 @@
             </div>
         </div>
     </div>
-    <div class="py-3 bg-dark">
-        <div class="container">
-            <div class="row d-flex">
-                <div class="col-lg-12 col-sm-12  mt-2 mb-2 text-center text-white">
-                    Copyright © 2021 <a href="javascript:void(0)"  class="fs-14 text-primary">Edomi</a>. Designed with <span class="fa fa-heart text-danger"></span> by <a href="javascript:void(0)" class="fs-14 text-primary"> Spruko </a> All rights reserved.
-                </div>
-            </div>
-        </div>
-    </div>
 </footer>
 <!--Footer Section-->
 
