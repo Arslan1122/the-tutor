@@ -289,6 +289,7 @@
                         <div class="head-box text-light">
                             ALL USERS
                         </div>
+                        <input type="hidden" id="user_id" value="{{$user_id}}">
 
                         <div class="chat-person-list">
                             <ul class="list-inline">
@@ -302,7 +303,7 @@
                                             <img src="https://i.ibb.co/6JpcfrK/p4.png" alt="">
                                         @endif
                                         <span > {{$user->name}}</span>
-                                            @if($user->unread>0)
+                                            @if(isset($user->unread) && $user->unread>0)
                                                 <span class="pending badge badge-primary float-right ">{{$user->unread}}</span>
                                             @endif
 
@@ -336,6 +337,17 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
 
     <script>
+        $(window).on('load', function() {
+            var us_id=$('#user_id').val();
+            if(us_id.length >0){
+
+                $('#'+us_id).trigger('click');
+            }
+        });
+        $(document).ready(function(){
+
+        });
+
         $("#attach").click(function(){
             $(".attachement").toggle();
         });
@@ -363,11 +375,13 @@
 
     <script>
 
+
         var receiver_id='';
         var my_id={{Auth::user()->id}};
         console.log(receiver_id);
 
         $(document).ready(function(){
+
 
             $('#filter').keyup(function() {
                 // Retrieve the input field text and reset the count to zero

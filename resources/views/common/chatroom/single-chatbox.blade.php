@@ -3,7 +3,7 @@
 
         <ul class="msg-box list-inline text-left d-inline-block float-left">
             <li> <i class="fas fa-arrow-left" id="back"></i> </li>
-            <li> <img src="https://i.ibb.co/fCzfFJw/person.jpg" alt="" width="40px"> <span> Naveen mandwariya </span> <br>
+            <li> <img src="https://i.ibb.co/fCzfFJw/person.jpg" alt="" width="40px"> <span> {{$user->name}} </span> <br>
             </li>
         </ul>
 

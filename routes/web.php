@@ -52,7 +52,8 @@ require __DIR__.'/teacher.php';
 
 
 Route::group(['middleware'=>'auth'],function(){
-    Route::get('showchat',[ChatController::class,'show']);
+    Route::get('showchat/{user_id?}',[ChatController::class,'show']);
+    Route::get('create_chat/{user_id}',[ChatController::class,'createNewChat']);
     Route::get('/chatroom/{id}',[ChatController::class,'singleChatBox'])->name('chatroom.single');
     Route::post('/chatroom/sendMsg',[ChatController::class,'sendMessage'])->name('massage.send');
 });
