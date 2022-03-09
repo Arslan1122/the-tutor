@@ -64,6 +64,7 @@ class ChatController extends Controller
                 ->select('users.id', 'users.name', 'teacher_profiles.profile_img', 'student_profiles.profile_img as student_img')
                 ->first();
         }
+
         return view('common.chatroom.index', compact('users', 'user_id'));
 
 
@@ -160,8 +161,15 @@ class ChatController extends Controller
             ChatRoom::create([
                 'to' => $id,
                 'from' => $my_id,
-                'message' => 'hiii'
+                'message' => null
+            ]);
+            ChatRoom::create([
+                'from' => $id,
+                'to' => $my_id,
+                'message' => null
             ]);
         }
+
+        return redirect(url('showchat/'.$id));
     }
 }

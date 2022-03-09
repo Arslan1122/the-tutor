@@ -100,7 +100,7 @@ Route::middleware('web')
 
 Route::group(['middleware'=>'auth'],function(){
     Route::get('showchat/{user_id?}',[ChatController::class,'show']);
-    Route::get('create_chat/{user_id}',[ChatController::class,'createNewChat']);
+    Route::get('create_chat/{user_id}',[ChatController::class,'createNewChat'])->name('chat.create.new');
     Route::get('/chatroom/{id}',[ChatController::class,'singleChatBox'])->name('chatroom.single');
     Route::post('/chatroom/sendMsg',[ChatController::class,'sendMessage'])->name('massage.send');
 });

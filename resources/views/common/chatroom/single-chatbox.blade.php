@@ -12,6 +12,7 @@
 
     <div class="msg_history">
         @foreach($messages as $message)
+            @if(!empty($message->message) || !empty($message->file) )
         <div class="{{$message->from==Auth::id() ? 'outgoing_msg' : 'incoming_msg'}}">
             @if($message->from!=Auth::id())
             <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
@@ -47,6 +48,7 @@
                         @endif
             </div>
         </div>
+            @endif
             @endforeach
 
     </div>
