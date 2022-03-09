@@ -26,6 +26,8 @@
             <ul class="slide-menu">
                 <li><a class="slide-item" href="{{ route('teacher.available.tuitions')  }}">Available Tuitions</a></li>
                 <li><a class="slide-item" href="{{ route('teacher.bids') }}">My Bids</a></li>
+                <li><a class="slide-item" href="{{ route('teacher.bids') }}">My Tuitions</a></li>
+                <li><a class="slide-item" href="{{ route('teacher.bids') }}">Completed Tuitions</a></li>
             </ul>
         </li>
             <li class="slide">
