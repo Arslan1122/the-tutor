@@ -30,6 +30,7 @@
                     <ul class="horizontalMenu-list">
                         <li aria-haspopup="true"><a href="/"> Home</a></li>
                         <li aria-haspopup="true"><a href="contact.html"> Contact Us</a></li>
+                        <li aria-haspopup="true"><a href="{{ route('pricing') }}">Pricing</a></li>
                         <li aria-haspopup="true" class="d-lg-none mt-5 pb-5 mt-lg-0">
                             <span><a class="btn btn-info" href="{{ route('register') }}">Register Now</a></span>
                         </li>

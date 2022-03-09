@@ -107,3 +107,5 @@ Route::group(['middleware'=>'auth'],function(){
 
 Route::get('/subscription/create', [SubscriptionController::class, 'index'])->name('subscription.create');
 Route::post('order-post', [SubscriptionController::class,'orderPost'])->name('order-post');
+
+Route::get('/pricing',[\App\Http\Controllers\GuestController::class,'pricing'])->name('pricing');
