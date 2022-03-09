@@ -16,18 +16,34 @@ use Pusher\Pusher;
 
 class ChatController extends Controller
 {
-    public function show(){
+    public function show($user_id=null){
+
 
             $loginUser = Auth::user()->id;
-            $users = DB::select("select users.id, users.name,users.is_admin, teacher_profiles.profile_img,student_profiles.profile_img as student_img , count(is_read) as unread from users
-           LEFT JOIN chat_rooms on users.id =chat_rooms.from and is_read=0 and chat_rooms.to=" . $loginUser . "
-           LEFT JOIN teacher_profiles on users.id=teacher_profiles.user_id
-           LEFT JOIN student_profiles on users.id=student_profiles.user_id
-           where users.id !=" . $loginUser . " group by users.id, users.name,users.is_admin,teacher_profiles.profile_img,student_img
-           ORDER BY unread DESC");
+//            $users = DB::select("select users.id, users.name,users.is_admin, teacher_profiles.profile_img,student_profiles.profile_img as student_img , count(is_read) as unread from users
+//           LEFT JOIN chat_rooms on users.id =chat_rooms.from and is_read=0 and chat_rooms.to=" . $loginUser . "
+//           LEFT JOIN teacher_profiles on users.id=teacher_profiles.user_id
+//           LEFT JOIN student_profiles on users.id=student_profiles.user_id
+//           where users.id !=" . $loginUser . " or chat_rooms.from = ". $loginUser ." group by users.id, users.name,users.is_admin,teacher_profiles.profile_img,student_img
+//           ORDER BY unread DESC");
+//            dd($users);
+
+      $users=DB::table('chat_rooms')
+          ->leftJoin('users','users.id','=','chat_rooms.from')
+          ->leftJoin('teacher_profiles','users.id','=','teacher_profiles.user_id')
+          ->leftJoin('student_profiles','users.id','=','student_profiles.user_id')
+          ->where('chat_rooms.from',$loginUser)
+          ->where('users.id','!=',$loginUser)
+          ->orWhere('chat_rooms.to',$loginUser)
+          ->select('users.id', 'users.name','users.is_admin', 'teacher_profiles.profile_img','student_profiles.profile_img as student_img'  )
+
+          ->get();
 
 
-            return view('common.chatroom.index', compact('users'));
+
+
+            return view('common.chatroom.index', compact('users','user_id'));
+
 
 
 
@@ -39,10 +55,10 @@ class ChatController extends Controller
         //All message of selected user
         //getting those message which is from=Auth::id() and to=user_id or from=user_id and to:Auth::id()
         $user = DB::table('users')
-             ->leftJoin('teacher_profiles','users.id','=','teacher_profiles.user_id')
-             ->leftJoin('student_profiles','users.id','=','student_profiles.user_id')
-            ->select('users.id', 'users.name','users.is_admin', 'teacher_profiles.profile_img','student_profiles.profile_img as student_img' )
-            ->where('users.id', $id)
+//             ->leftJoin('teacher_profiles','users.id','=','teacher_profiles.user_id')
+//             ->leftJoin('student_profiles','users.id','=','student_profiles.user_id')
+//            ->select('users.id', 'users.name','users.is_admin', 'teacher_profiles.profile_img','student_profiles.profile_img as student_img' )
+            ->where('id', $id)
             ->first();
         $messages = ChatRoom::with('user')->where(function ($query) use ($id, $my_id) {
             $query->where('from', $my_id)->where('to', $id);
@@ -112,5 +128,21 @@ class ChatController extends Controller
             $query->where('from', $id)->where('to', $my_id);
         })->get();
         return view('ajax.get-message', compact('messages', 'user'));
+    }
+
+    public function createNewChat($id){
+        $my_id=Auth::id();
+        $chatExist = ChatRoom::where(function ($query) use ($id, $my_id) {
+            $query->where('from', $my_id)->where('to', $id);
+        })->orwhere(function ($query) use ($id, $my_id) {
+            $query->where('from', $id)->where('to', $my_id);
+        });
+        if($chatExist->doesntExist()){
+            ChatRoom::create([
+                'to'=>$id,
+                'from'=>$my_id,
+                'message'=>'hiii'
+            ]);
+        }
     }
 }
