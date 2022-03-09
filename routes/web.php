@@ -4,6 +4,7 @@ use App\Http\Controllers\{FormController, RenderFormController};
 use App\Http\Controllers\Common\ChatController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SubscriptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -103,3 +104,6 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('/chatroom/{id}',[ChatController::class,'singleChatBox'])->name('chatroom.single');
     Route::post('/chatroom/sendMsg',[ChatController::class,'sendMessage'])->name('massage.send');
 });
+
+Route::get('/subscription/create', [SubscriptionController::class, 'index'])->name('subscription.create');
+Route::post('order-post', [SubscriptionController::class,'orderPost'])->name('order-post');

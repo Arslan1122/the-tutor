@@ -2,10 +2,10 @@
 @section('content')
     <div class="side-app">
         <div class="page-header">
-            <h4 class="page-title">My Bids</h4>
+            <h4 class="page-title">Tuitions List</h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                <li class="breadcrumb-item active" aria-current="page">bids</li>
+                <li class="breadcrumb-item active" aria-current="page">Tuitions</li>
             </ol>
         </div>
         <!--/Page-Header-->
@@ -16,7 +16,7 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <div>
-                            <h3 class="card-title">Bids on tuitions</h3>
+                            <h3 class="card-title">Active Tuitions</h3>
                         </div>
 
                     </div>
@@ -29,32 +29,19 @@
                                     <th>Title</th>
                                     <th>Description</th>
                                     <th>Fee / Month</th>
-                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @if(isset($bids) && !empty($bids))
-                                    @foreach($bids as $bid)
+                                @if(isset($tuitions) && !empty($tuitions))
+                                    @foreach($tuitions as $key=>$tuition)
                                         <tr>
-                                            <td>{{$bid->tuition->id}}</td>
-                                            <td>{{$bid->tuition->title}}</td>
-                                            <td>{{ \Illuminate\Support\Str::limit($bid->tuition->description, 50,'.....') }}</td>
-                                            <td>{{ $bid->tuition->pay }}</td>
+                                            <td>{{$tuition->tuition->id}}</td>
+                                            <td>{{$tuition->tuition->title}}</td>
+                                            <td>{{ \Illuminate\Support\Str::limit($tuition->tuition->description, 50,'.....') }}</td>
+                                            <td>{{ $tuition->tuition->pay }}</td>
                                             <td>
-                                                @if($bid->is_accepeted == 0 && $bid->is_completed == 0)
-                                                    <label class="badge badge-dark">Not Accepted</label>
-                                                @endif
-                                                @if($bid->is_accepted && $bid->is_completed == 0)
-                                                        <label class="badge badge-info">Active</label>
-                                                @endif
-                                                @if($bid->is_accepted &&  $bid->is_completed)
-                                                        <label class="badge badge-success">Completed</label>
-                                                @endif
-
-                                            </td>
-                                            <td>
-                                                <a href="{{ route('teacher.tuition.show', $bid->tuition->id) }}" class="btn btn-danger"> <i class="fa fa-eye text-white"></i> </a>
+                                                <a href="{{ route('teacher.tuition.show', $tuition->tuition->id) }}" class="btn btn-danger"> <i class="fa fa-eye text-white"></i> </a>
                                             </td>
                                         </tr>
                                     @endforeach

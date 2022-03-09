@@ -106,7 +106,9 @@ class TuitionController extends Controller
 
     public function completeTuition(Request  $request)
     {
-        Tuition::find($request->id)->update(['is_completed' => 1]);
+        $tuition = Tuition::find($request->id);
+        $tuition->update(['is_completed' => 1]);
+        $tuition->isAcceptedproposals()->update(['is_completed' => 1]);
         TuitionRating::create([
             'user_id' => Auth::id(),
             'teacher_id' => $request->teacherId,

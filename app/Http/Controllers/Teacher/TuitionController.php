@@ -37,7 +37,7 @@ class TuitionController extends Controller
 
     public function show($id)
     {
-        $tuition = Tuition::where('id',$id)->with(['user','subject','course', 'standard'])->first();
+        $tuition = Tuition::where('id',$id)->with(['user','subject','course', 'standard','review'])->first();
         return view('teacher.tuitions.detail', compact('tuition'));
     }
 
@@ -62,5 +62,18 @@ class TuitionController extends Controller
     {
         $bids = TuitionProposal::where('teacher_id', Auth::id())->with('tuition')->get();
         return view('teacher.tuitions.bids', compact('bids'));
+    }
+
+    public function myTuitions()
+    {
+        $tuitions = TuitionProposal::where('teacher_id',Auth::id())->with('tuition')->where('is_accepted', 1)->where('is_completed', 0)->get();
+        return view('teacher.tuitions.my-tuition', compact('tuitions'));
+    }
+
+    public function completed()
+    {
+        $tuitions = TuitionProposal::where('teacher_id',Auth::id())->where('is_accepted',1)
+            ->where('is_completed', 1)->with('tuition')->get();
+        return view('teacher.tuitions.completed', compact('tuitions'));
     }
 }

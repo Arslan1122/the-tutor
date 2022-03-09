@@ -35,4 +35,9 @@ class Tuition extends Model
     {
         return $this->hasMany(TuitionProposal::class)->where('is_accepted', 1);
     }
+
+    public function review()
+    {
+        return $this->hasOne(TuitionRating::class);
+    }
 }
