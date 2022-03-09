@@ -47,6 +47,7 @@ class ChatController extends Controller
 
 
 
+
     }
     public function singleChatBox($id){
         $my_id = Auth::id();
@@ -93,7 +94,7 @@ class ChatController extends Controller
         $msg->save();
 
         $options = array(
-            'cluster' => 'ap4',
+            'cluster' => env('PUSHER_APP_CLUSTER'),
             'useTLS' => true
         );
         $pusher = new pusher(

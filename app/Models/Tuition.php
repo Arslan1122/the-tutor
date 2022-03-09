@@ -30,4 +30,9 @@ class Tuition extends Model
     {
         return $this->belongsTo(Standard::class);
     }
+
+    public function isAcceptedproposals()
+    {
+        return $this->hasMany(TuitionProposal::class)->where('is_accepted', 1);
+    }
 }

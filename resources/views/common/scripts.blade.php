@@ -71,23 +71,35 @@
 <script src="{{ asset('backend/assets/plugins/sweet-alert/sweetalert.min.js') }}"></script>
 <script src="{{ asset('backend/assets/js/sweet-alert.js') }}"></script>
 
+<!-- Notifications js -->
+<script src="{{ asset('backend/assets/plugins/notify/js/rainbow.js') }}"></script>
+<script src="{{ asset('backend/assets/plugins/notify/js/sample.js') }}"></script>
+<script src="{{ asset('backend/assets/plugins/notify/js/jquery.growl.js') }}"></script>
+<script src="{{ asset('backend/assets/plugins/notify/js/notifIt.js') }}"></script>
+
 <script src="https://js.pusher.com/5.0/pusher.min.js"></script>
 <!-- Custom Js-->
 <script src="{{asset('backend/assets/js/admin-custom.js')}}"></script>
 
 <script>
-    @if(\Session::has('success'))
-    swal("Success!", "{{ \Session::get('success') }}", "success");
-    @elseif(\Session::has('error'))
-    swal("Error!", "{{ \Session::get('error') }}", "error");
+        @if(\Session::has('success'))
+        notif({
+            msg: "<b>Success:</b> {{ \Session::get('success') }}",
+            type: "success"
+        });
+        @elseif(\Session::has('error'))
+        notif({
+            msg: "<b>Error:</b> {{ \Session::get('error') }}",
+            type: "error"
+        });
     @endif
 </script>
 <script>
     // Enable pusher logging - don't include this in production
     Pusher.logToConsole = true;
 
-    var pusher = new Pusher('59251744d2c0a729dcfb', {
-        cluster: 'ap4'
+    var pusher = new Pusher('68a73fb383d44ba5c6d1', {
+        cluster: 'ap2'
     });
 
     var channel = pusher.subscribe('my-channel');

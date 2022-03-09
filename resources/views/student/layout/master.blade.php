@@ -1,7 +1,8 @@
 
 <html lang="en">
 @include('common.style')
-
+@yield('styles')
+@stack('form_builder_styles')
 <body class="app sidebar-mini">
 
 
@@ -31,6 +32,7 @@
 
 @include('common.scripts')
 @yield('scripts')
+@stack('form_builder_scripts')
 </body>
 
 </html>

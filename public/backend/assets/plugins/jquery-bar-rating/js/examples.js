@@ -4,6 +4,10 @@ $(function() {
             theme: 'bars-1to10'
         });
 
+        $('#example-1to1').barrating('show', {
+            theme: 'bars-1to10'
+        });
+
         $('#example-movie').barrating('show', {
             theme: 'bars-movie'
         });

@@ -12,13 +12,17 @@
     <link rel="shortcut icon" type="image/x-icon" href="https://spruko.com/demo/edomi/Edomi/assets/images/brand/favicon.ico" />
 
     <!-- Title -->
-    <title>Edomi - Online Education & Learning Courses HTML CSS Responsive Template</title>
+    <title>The Tutor - Online Education & Learning Courses</title>
 
     <!-- Bootstrap css -->
     <link href="{{asset('backend/assets/plugins/bootstrap/css/bootstrap.css')}}" rel="stylesheet" />
 
     <!-- Sidemenu Css -->
     <link href="{{asset('backend/assets/css/sidemenu.css')}}" rel="stylesheet" />
+
+    <!-- Notifications  Css -->
+    <link href="{{ asset('backend/assets/plugins/notify/css/jquery.growl.css') }}" rel="stylesheet" />
+    <link href="{{ asset('backend/assets/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
 
     <!-- Dashboard Css -->
     <link href="{{asset('backend/assets/css/style.css')}}" rel="stylesheet" />

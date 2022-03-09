@@ -27,7 +27,7 @@
 
                                     <div class="dropdown header-user ">
                                         <a href="javascript:void(0)" class="nav-link leading-none user-img" data-bs-toggle="dropdown">
-                                            <img src="{{asset('backend/assets/images/users/female/20.jpg')}}" alt="profile-img" class="avatar">
+                                            <img src="@if(isset(\Auth::user()->teacherProfile->profile_img)) {{ asset(\Auth::user()->teacherProfile->profile_img) }} @else {{ asset('backend/assets/images/users/female/3.jpg') }} @endif" alt="profile-img" class="avatar">
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow ">
                                             <a class="dropdown-item" href="{{ route('teacher.profile.display') }}">
