@@ -25,7 +25,7 @@
     </style>
 @endsection
 @section('content')
-    <div class="row mt-5">
+    <div class="row" style="margin-top: 8%;">
         <div class="col-md-6 offset-3">
             <div class="panel panel-default credit-card-box">
                 <div class="panel-heading display-table" >
@@ -49,9 +49,9 @@
                             {!! Form::label('plane', 'Select Plan:') !!}
                             {!! Form::select('plane',
                                     [
-                                        'price_1KbOPWDdqAabSxrcGAJ3HDtz' => 'Monthly ($25)',
-                                        'price_1KbOPWDdqAabSxrcCyXWwebZ' => '6 Months ($40)',
-                                        'price_1KbOPWDdqAabSxrcNPOz6SJo' => 'Yearly ($70)',
+                                        '30' => 'Monthly ($25)',
+                                        '40' => '6 Months ($40)',
+                                        '70' => 'Yearly ($70)',
                                     ], null, [
                                 'class'                       => 'form-control',
                                 'required'                    => 'required',

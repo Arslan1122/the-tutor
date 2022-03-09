@@ -3,6 +3,7 @@
 use App\Http\Controllers\Teacher\ProfileController;
 use App\Http\Controllers\Teacher\TuitionController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Teacher\TeacherController;
 
 Route::group(['prefix'=>'teacher','middleware'=>['auth','teacher'],'as'=>'teacher.'],function(){
 
@@ -25,4 +26,6 @@ Route::group(['prefix'=>'teacher','middleware'=>['auth','teacher'],'as'=>'teache
         Route::get('active', [TuitionController::class, 'myTuitions'])->name('my.tuitions');
         Route::get('completed', [TuitionController::class, 'completed'])->name('completed.tuitions');
     });
+
+    Route::get('/package',[TeacherController::class,'package'])->name('package');
 });

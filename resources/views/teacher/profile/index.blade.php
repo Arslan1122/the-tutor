@@ -14,6 +14,9 @@
         @elseif(\Auth::user()->is_block)
             <div class="alert alert-danger">You're blocked! Contact Admin for furthur investigation</div>
         @endif
+        @if(\Auth::user()->is_subscribed)
+            <div class="alert alert-info font-weight-bold text-center">You have {{ \Auth::user()->no_of_bids }} numbers of bids remaining. To upgrade your package. <a href="{{ route('pricing') }}">Click Here</a></div>
+        @endif
         <div class="row">
             <div class="col-xl-3 col-lg-4 col-md-12">
                 <div class="card user-pro-list overflow-hidden">

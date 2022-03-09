@@ -27,7 +27,7 @@
                             </div>
                             <div class="card-body">
                                 <h1 class="pricing-card-title mb-5">$25 <small class="text-muted fs-20">/ mo</small></h1>
-                                <p class="mb-5">50 Bid / Month</p>
+                                <p class="mb-5">30 Bid / Month</p>
                                 @if(\Illuminate\Support\Facades\Auth::check())
                                     <a href="{{ route('subscription.create') }}" class="btn btn-primary" type="button">Pay Now</a>
                                 @else
@@ -47,7 +47,7 @@
                             </div>
                             <div class="card-body">
                                 <h1 class="pricing-card-title mb-5">$40 <small class="text-muted fs-20">/ 3 Months</small></h1>
-                                <p class="mb-5">50 Bids</p>
+                                <p class="mb-5">70 Bids</p>
                                 @if(\Illuminate\Support\Facades\Auth::check())
                                 <a href="{{ route('subscription.create') }}" class="btn btn-primary" type="button">Pay Now</a>
                                 @else
