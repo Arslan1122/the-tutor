@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Common;
 
 
-
 use App\Http\Controllers\Controller;
 use App\Models\ChatRoom;
 use App\Models\User;
@@ -16,10 +15,11 @@ use Pusher\Pusher;
 
 class ChatController extends Controller
 {
-    public function show($user_id=null){
+    public function show($user_id = null)
+    {
 
 
-            $loginUser = Auth::user()->id;
+        $loginUser = Auth::user()->id;
 //            $users = DB::select("select users.id, users.name,users.is_admin, teacher_profiles.profile_img,student_profiles.profile_img as student_img , count(is_read) as unread from users
 //           LEFT JOIN chat_rooms on users.id =chat_rooms.from and is_read=0 and chat_rooms.to=" . $loginUser . "
 //           LEFT JOIN teacher_profiles on users.id=teacher_profiles.user_id
@@ -28,28 +28,49 @@ class ChatController extends Controller
 //           ORDER BY unread DESC");
 //            dd($users);
 
-      $users=DB::table('chat_rooms')
-          ->leftJoin('users','users.id','=','chat_rooms.from')
-          ->leftJoin('teacher_profiles','users.id','=','teacher_profiles.user_id')
-          ->leftJoin('student_profiles','users.id','=','student_profiles.user_id')
-          ->where('chat_rooms.from',$loginUser)
-          ->where('users.id','!=',$loginUser)
-          ->orWhere('chat_rooms.to',$loginUser)
-          ->select('users.id', 'users.name','users.is_admin', 'teacher_profiles.profile_img','student_profiles.profile_img as student_img'  )
+//      $users=DB::table('chat_rooms')
+//          ->leftJoin('users','users.id','=','chat_rooms.to')
+//          ->leftJoin('teacher_profiles','users.id','=','teacher_profiles.user_id')
+//          ->leftJoin('student_profiles','users.id','=','student_profiles.user_id')
+//          ->where('users.id','!=',$loginUser)
+//          ->where('chat_rooms.from',$loginUser)
+//          ->orWhere('chat_rooms.to',$loginUser)
+//          ->select('users.id', 'users.name','teacher_profiles.profile_img','student_profiles.profile_img as student_img')
+//          ->get();
 
-          ->get();
+        $conversations = DB::table('chat_rooms')
+            ->where('from', auth()->id())
+            ->orWhere('to', auth()->id())
+            ->leftJoin('users', 'users.id', '=', 'chat_rooms.to')
+            ->select('users.id as id', 'users.*', 'chat_rooms.id as room_id', 'chat_rooms.*')
+            ->where('users.id', '!=', $loginUser)
+            ->get();
 
+        $getusers = $conversations->map(function ($conversation) {
+            if ($conversation->from == auth()->id()) {
+                return $conversation->to;
+            }
+            return $conversation->from;
+        })->unique();
 
+        $users = [];
 
+        foreach ($getusers as $user) {
 
-            return view('common.chatroom.index', compact('users','user_id'));
-
-
-
+            $users[] = DB::table('users')
+                ->where('users.id', $user)
+                ->leftJoin('teacher_profiles', 'users.id', '=', 'teacher_profiles.user_id')
+                ->leftJoin('student_profiles', 'users.id', '=', 'student_profiles.user_id')
+                ->select('users.id', 'users.name', 'teacher_profiles.profile_img', 'student_profiles.profile_img as student_img')
+                ->first();
+        }
+        return view('common.chatroom.index', compact('users', 'user_id'));
 
 
     }
-    public function singleChatBox($id){
+
+    public function singleChatBox($id)
+    {
         $my_id = Auth::id();
         ChatRoom::where(['from' => $id, 'to' => $my_id])->update(['is_read' => 1]);
         //All message of selected user
@@ -67,20 +88,19 @@ class ChatController extends Controller
         })->get();
 
 
-
-
-
         return view('common.chatroom.single-chatbox', compact('messages', 'user'));
 
     }
-    public function sendMessage(Request $request){
 
-        $new_img='';
+    public function sendMessage(Request $request)
+    {
+
+        $new_img = '';
         $msg = new ChatRoom();
-        if($request->file!="undefined"){
-            $file=$request->file;
-            $new_img='chatfile'.time().uniqid().'.'.$file->getClientOriginalExtension();
-            $file->move(public_path('upload/chats/'),$new_img);
+        if ($request->file != "undefined") {
+            $file = $request->file;
+            $new_img = 'chatfile' . time() . uniqid() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('upload/chats/'), $new_img);
             $msg->file = $new_img;
 
         }
@@ -103,16 +123,14 @@ class ChatController extends Controller
             env('PUSHER_APP_ID'),
             $options
         );
-        $data = ['from' => $from, 'to' => $to,'img','file'=>$new_img];
-
-
-
+        $data = ['from' => $from, 'to' => $to, 'img', 'file' => $new_img];
 
 
         $pusher->trigger('my-channel', 'my-event', $data);
 
 
     }
+
     public function getMessage($id)
     {
         $my_id = Auth::id();
@@ -130,18 +148,19 @@ class ChatController extends Controller
         return view('ajax.get-message', compact('messages', 'user'));
     }
 
-    public function createNewChat($id){
-        $my_id=Auth::id();
+    public function createNewChat($id)
+    {
+        $my_id = Auth::id();
         $chatExist = ChatRoom::where(function ($query) use ($id, $my_id) {
             $query->where('from', $my_id)->where('to', $id);
         })->orwhere(function ($query) use ($id, $my_id) {
             $query->where('from', $id)->where('to', $my_id);
         });
-        if($chatExist->doesntExist()){
+        if ($chatExist->doesntExist()) {
             ChatRoom::create([
-                'to'=>$id,
-                'from'=>$my_id,
-                'message'=>'hiii'
+                'to' => $id,
+                'from' => $my_id,
+                'message' => 'hiii'
             ]);
         }
     }

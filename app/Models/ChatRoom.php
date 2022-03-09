@@ -16,4 +16,8 @@ class ChatRoom extends Model
     public function user(){
         return $this->belongsTo(User::class,'from');
     }
+
+    public function to(){
+        return $this->belongsTo(User::class,'to');
+    }
 }
