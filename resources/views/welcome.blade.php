@@ -51,8 +51,8 @@
         <div class="container">
             <div class="section-title d-md-flex">
                 <div>
-                    <h2>Categories</h2>
-                    <p class="fs-18 lead">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                    <h2>Subjects & Courses</h2>
+                    <p class="fs-18 lead">Services that The Tutor provides</p>
                 </div>
                 <div class="ms-auto">
                     <a class="btn btn-light mt-3" href="javascript:void(0)"><i class="fe fe-arrow-right"></i> View More</a>
@@ -67,9 +67,8 @@
                                 <i class="fe fe-book-open"></i>
                             </div>
                             <div class="item-all-text mt-3">
-                                <h5 class="mb-0">Language</h5>
-                                <p class="mt-3">Sed do eiusmod tempor ut labore et dolore magna aliqua</p>
-                                <a class="btn-link" href="javascript:void(0)"><i class="fe fe-chevron-right"></i> View More</a>
+                                <h5 class="mb-0">O/A Levels</h5>
+                                <p class="mt-3">Complete O/A Level Subjects</p>
                             </div>
                         </div>
                     </div>
@@ -81,8 +80,7 @@
                             </div>
                             <div class="item-all-text mt-3">
                                 <h5 class="mb-0">IT Courses</h5>
-                                <p class="mt-3">Sed do eiusmod tempor ut labore et dolore magna aliqua</p>
-                                <a class="btn-link" href="javascript:void(0)"><i class="fe fe-chevron-right"></i> View More</a>
+                                <p class="mt-3">IT course for everyone</p>
                             </div>
                         </div>
                     </div>
@@ -94,8 +92,7 @@
                             </div>
                             <div class="item-all-text mt-3">
                                 <h5 class="mb-0">Data Science</h5>
-                                <p class="mt-3">Sed do eiusmod tempor ut labore et dolore magna aliqua</p>
-                                <a class="btn-link" href="javascript:void(0)"><i class="fe fe-chevron-right"></i> View More</a>
+                                <p class="mt-3">Guidence to Data Science Subjects</p>
                             </div>
                         </div>
                     </div>
@@ -107,8 +104,7 @@
                             </div>
                             <div class="item-all-text mt-3">
                                 <h5 class="mb-0">Health</h5>
-                                <p class="mt-3">Sed do eiusmod tempor ut labore et dolore magna aliqua</p>
-                                <a class="btn-link" href="javascript:void(0)"><i class="fe fe-chevron-right"></i> View More</a>
+                                <p class="mt-3">Health Subjects for </p>
                             </div>
                         </div>
                     </div>

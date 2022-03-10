@@ -148,7 +148,7 @@
         .msg_history {
             padding: 10px;
             height:415px;
-            overflow: overlay;
+            overflow: scroll;
         }
         .incoming_msg_img {
             display: inline-block;

@@ -42,7 +42,7 @@
                                             <td>{{ \Illuminate\Support\Str::limit($bid->tuition->description, 50,'.....') }}</td>
                                             <td>{{ $bid->tuition->pay }}</td>
                                             <td>
-                                                @if($bid->is_accepeted == 0 && $bid->is_completed == 0)
+                                                @if($bid->is_accepted == 0 && $bid->is_completed == 0)
                                                     <label class="badge badge-dark">Not Accepted</label>
                                                 @endif
                                                 @if($bid->is_accepted && $bid->is_completed == 0)
