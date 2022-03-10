@@ -3,6 +3,7 @@
 use App\Http\Controllers\Student\ProfileController;
 use App\Http\Controllers\Student\TuitionController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Student\ScheduleController;
 
 Route::group(['prefix'=>'student','middleware'=>['auth','student'],'as'=>'student.'],function(){
 
@@ -31,4 +32,6 @@ Route::group(['prefix'=>'student','middleware'=>['auth','student'],'as'=>'studen
     Route::group(['prefix' => 'teacher'], function () {
         Route::get('hire/{id}', [TuitionController::class, 'hireTeacher'])->name('hire.teacher');
     });
+
+    Route::get('/schedules',[ScheduleController::class, 'index'])->name('schedule.index');
 });

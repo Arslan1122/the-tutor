@@ -4,6 +4,7 @@ use App\Http\Controllers\Teacher\ProfileController;
 use App\Http\Controllers\Teacher\TuitionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Teacher\TeacherController;
+use App\Http\Controllers\Teacher\TuitionScheduleController;
 
 Route::group(['prefix'=>'teacher','middleware'=>['auth','teacher'],'as'=>'teacher.'],function(){
 
@@ -25,6 +26,13 @@ Route::group(['prefix'=>'teacher','middleware'=>['auth','teacher'],'as'=>'teache
         Route::get('bids', [TuitionController::class, 'bids'])->name('bids');
         Route::get('active', [TuitionController::class, 'myTuitions'])->name('my.tuitions');
         Route::get('completed', [TuitionController::class, 'completed'])->name('completed.tuitions');
+    });
+
+    Route::group(['prefix' => 'schedule'], function () {
+        Route::get('/', [TuitionScheduleController::class, 'index'])->name('schedule.index');
+        Route::get('create', [TuitionScheduleController::class, 'create'])->name('schedule.create');
+        Route::post('store', [TuitionScheduleController::class, 'store'])->name('schedule.store');
+        Route::get('delete/{id}', [TuitionScheduleController::class, 'destroy'])->name('schedule.delete');
     });
 
     Route::get('/package',[TeacherController::class,'package'])->name('package');
