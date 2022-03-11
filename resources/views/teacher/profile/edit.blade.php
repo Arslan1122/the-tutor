@@ -156,6 +156,22 @@
                                     <textarea class="form-control" rows="5" name="about_me">{{ @$profile->about_me }}</textarea>
                                 </div>
                             </div>
+                            <div class="col-sm-6 col-md-6">
+                                <label class="form-label font-weight-bold">Cnic Front</label>
+                                <input type="file" name="cnic_front" value="1" class="dropify  @error('cnic_front') is-invalid state-invalid @enderror" data-default-file="{{asset(@$profile->cnic_front)}}" data-height="180"  />
+                                @error('cnic_front')
+                                <div class="text-danger">{{$message}}</div>
+                                @enderror
+
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <label class="form-label font-weight-bold">Cnic Back</label>
+                                <input type="file" name="cnic_back" value="1" class="dropify  @error('cnic_back') is-invalid state-invalid @enderror" data-default-file="{{asset(@$profile->cnic_back)}}" data-height="180"  />
+                                @error('cnic_back')
+                                <div class="text-danger">{{$message}}</div>
+                                @enderror
+
+                            </div>
                         </div>
                     </div>
                     <div class="card-footer text-end">

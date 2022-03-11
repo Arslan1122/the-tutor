@@ -180,6 +180,41 @@
                         </div>
                     </div>
                 </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="font-weight-semibold">Teacher CNIC </h5>
+                        <div class="main-profile-contact-list d-lg-flex">
+                            <div class="media me-5">
+                                <div class="media-icon text-secondary me-5 mt-1" style="width: 5rem">
+                                    <h5>FRONT</h5>
+                                </div>
+                                @if(empty($teacher->teacherProfile->cnic_front))
+                                    <p>Cnic front image not added</p>
+                                @else
+                                <div class="media-body">
+                                    <a href="{{ asset(@$teacher->teacherProfile->cnic_front) }}" target="_blank">
+                                        <img src="{{ asset(@$teacher->teacherProfile->cnic_front) }}" style="height: 150px; width: 300px">
+                                    </a>
+                                </div>
+                                @endif
+                            </div>
+                            <div class="media me-5">
+                                <div class="media-icon text-secondary me-5 mt-1" style="width: 5rem">
+                                    <h5>Back</h5>
+                                </div>
+                                @if(empty($teacher->teacherProfile->cnic_back))
+                                    <p>Cnic back image not added</p>
+                                @else
+                                <div class="media-body">
+                                    <a href="{{ asset(@$teacher->teacherProfile->cnic_back) }}" target="_blank">
+                                        <img src="{{ asset(@$teacher->teacherProfile->cnic_back) }}" style="height: 150px; width: 300px">
+                                    </a>
+                                </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

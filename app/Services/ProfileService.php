@@ -43,6 +43,25 @@ class ProfileService
                 $model::updateOrCreate(['user_id' => $id], ['profile_img' => $path . '/' . $ImgnewName]);
             }
 
+            if ($request->cnic_front) {
+
+                $profieImg = $request->cnic_front;
+                $ImgnewName = time() . '.' . $profieImg->getClientOriginalExtension();
+                $path = '/uploads/Teacher/cnic';
+                $profileImg = Image::make($profieImg->getRealPath());
+                $profileImg->save(public_path($path) . '/' . $ImgnewName);
+                $model::updateOrCreate(['user_id' => $id], ['cnic_front' => $path . '/' . $ImgnewName]);
+            }
+
+            if ($request->cnic_back) {
+                $profieImg = $request->cnic_back;
+                $ImgnewName = time() . '.' . $profieImg->getClientOriginalExtension();
+                $path = '/uploads/Teacher/cnic';
+                $profileImg = Image::make($profieImg->getRealPath());
+                $profileImg->save(public_path($path) . '/' . $ImgnewName);
+                $model::updateOrCreate(['user_id' => $id], ['cnic_back' => $path . '/' . $ImgnewName]);
+            }
+
             if ($request->intro_clip) {
                 if ($request->old_clip) {
                     unlink($request->old_clip);
@@ -55,7 +74,7 @@ class ProfileService
                 $model::updateOrCreate(['user_id' => $id], ['intro_clip' => $path . '/' . $newClip]);
             }
 
-            $data = $request->except(['_token', 'intro_clip', 'old_clip', 'profile_img', 'old_image', 'standards', 'courses', 'subjects']);
+            $data = $request->except(['_token', 'intro_clip', 'old_clip', 'profile_img','cnic_front','cnic_back','old_image', 'standards', 'courses', 'subjects']);
             $model::updateOrCreate(['user_id' => $id], $data);
 
             if (!empty($request->standards) && sizeof($request->standards) > 0) {
