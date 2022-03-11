@@ -93,7 +93,7 @@
                                     <div class="col-md-10 col-sm-9">
                                         <p class="mt-4 mt-sm-0">{{ $proposal->description }}</p>
                                         <a href="{{route('chat.create.new',$proposal->teacher_id)}}" class="btn btn-success">Chat </a>
-                                        <a href="" class="btn btn-info">View Profile </a>
+                                        <a href="{{ route('teacher.profile',$proposal->teacher_id) }}" class="btn btn-info" target="_blank">View Profile </a>
                                         <a href="{{ route('student.hire.teacher', $proposal->id) }}"
                                            class="btn btn-primary">Hire Teacher </a>
                                     </div>

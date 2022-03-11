@@ -99,8 +99,8 @@
                                     </div>
                                     <div class="col-md-10 col-sm-9">
                                         <p class="mt-4 mt-sm-0">{{ $proposal->description }}</p>
-                                        <a href="" class="btn btn-success">Chat </a>
-                                        <a href="" class="btn btn-info">View Profile </a>
+                                        <a href="{{route('chat.create.new',$proposal->teacher_id)}}" class="btn btn-success">Chat </a>
+                                        <a href="{{ route('teacher.profile',$proposal->teacher_id) }}" class="btn btn-info" target="_blank">View Profile </a>
                                         @if($tuition->is_completed == 0)
                                         <a href=""
                                            class="btn btn-primary" data-bs-toggle="modal"

@@ -80,4 +80,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserStandard::class);
     }
+
+    public function teacherRatings()
+    {
+        return $this->hasMany(TuitionRating::class , 'teacher_id');
+    }
 }

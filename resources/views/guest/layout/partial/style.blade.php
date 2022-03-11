@@ -34,9 +34,9 @@
 
     <!-- Switcher css -->
     <link  href="{{asset('frontend/assets/switcher/css/switcher.css')}}" rel="stylesheet" id="switcher-css" type="text/css" media="all"/>
-
     <!-- Color Skin css -->
     <link id="theme" rel="stylesheet" type="text/css" media="all" href="{{asset('frontend/assets/color-skins/color.css')}}" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">
 
 </head>
 <body>

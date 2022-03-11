@@ -5,7 +5,7 @@ use App\Http\Controllers\Common\ChatController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SubscriptionController;
-
+use App\Http\Controllers\GuestController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,13 +17,13 @@ use App\Http\Controllers\SubscriptionController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('/');
+Route::get('/', [GuestController::class,'welcome'])->name('/');
 
 Route::get('/home', function () {
     return view('welcome');
 })->name('home');
+
+Route::get('/teacher-profile/{id}',[GuestController::class, 'teacherProfile'])->name('teacher.profile');
 
 Route::get('/redirects', function () {
     if(Auth::user()->is_admin)
