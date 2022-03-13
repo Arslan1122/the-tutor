@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Standard;
 use App\Models\Subject;
+use App\Models\User;
 use App\Models\UserCourse;
 use App\Models\UserStandard;
 use App\Models\UserSubject;
@@ -119,5 +120,11 @@ class AdminPagesController extends Controller
 
         session()->flash('success','Subject Deleted');
         return redirect()->back();
+    }
+
+    public function dashboard()
+    {
+        $teachers = User::role('teacher')->with('teacherProfile')->where('is_approved', 0)->where('is_block', 0)->orderBy('id','desc')->get();
+        return view('admin.index',compact('teachers'));
     }
 }

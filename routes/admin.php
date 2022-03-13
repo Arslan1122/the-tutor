@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 Route::view('admin/login','auth.admin-login');
 Route::group(['prefix'=>'admin','middleware'=>['auth','admin'], 'as' => 'admin.'],function(){
 
-    Route::view('dashboard','admin.index');
+    Route::get('dashboard',[AdminPagesController::class, 'dashboard'])->name('dashboard');
 
     //teachers
     Route::resource('teachers', TeacherController::class);
@@ -34,7 +34,7 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin'], 'as' => 'admin.'
     });
 
     //dashboards
-    Route::view('/dashboard','admin.index');
+//    Route::view('/dashboard','admin.index');
 
     //courses
     Route::get('/courses',[AdminPagesController::class,'coursesIndex'])->name('courses.index');
