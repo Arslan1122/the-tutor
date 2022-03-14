@@ -6,9 +6,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Teacher\TeacherController;
 use App\Http\Controllers\Teacher\TuitionScheduleController;
 
-Route::group(['prefix'=>'teacher','middleware'=>['auth','teacher'],'as'=>'teacher.'],function(){
+Route::group(['prefix'=>'teacher','middleware'=>['auth','teacher','verified'],'as'=>'teacher.'],function(){
 
-    Route::view('/dashboard','teacher.index')->name('dashboard');
+    Route::get('/dashboard',[TeacherController::class, 'index'])->name('dashboard');
 
     Route::group(['prefix'=>'profile','as'=>'profile.'],function(){
 
@@ -36,4 +36,12 @@ Route::group(['prefix'=>'teacher','middleware'=>['auth','teacher'],'as'=>'teache
     });
 
     Route::get('/package',[TeacherController::class,'package'])->name('package');
+
+    Route::get('books', [TeacherController::class , 'books'])->name('all.books');
+
+    Route::get('books/create', [TeacherController::class , 'createBook'])->name('books.create');
+
+    Route::get('books/delete/{id}', [TeacherController::class , 'deleteBook'])->name('books.delete');
+
+    Route::post('upload/book', [TeacherController::class,'uploadBook'])->name('upload.book');
 });

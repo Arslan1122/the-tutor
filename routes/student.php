@@ -5,9 +5,9 @@ use App\Http\Controllers\Student\TuitionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Student\ScheduleController;
 
-Route::group(['prefix'=>'student','middleware'=>['auth','student'],'as'=>'student.'],function(){
+Route::group(['prefix'=>'student','middleware'=>['auth','student','verified'],'as'=>'student.'],function(){
 
-    Route::view('/dashboard','student.index')->name('dashboard');
+    Route::get('/dashboard',[\App\Http\Controllers\Student\StudentController::class, 'dashboard'])->name('dashboard');
 
     Route::group(['prefix'=>'profile','as'=>'profile.'],function(){
         Route::get('/',[ProfileController::class,'display'])->name('display');

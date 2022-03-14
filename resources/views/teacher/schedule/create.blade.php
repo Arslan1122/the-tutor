@@ -1,7 +1,7 @@
 @extends('teacher.layout.master')
 @section('content')
     <div class="row">
-        <div class="col-lg-8 offset-2">
+        <div class="col-lg-8 offset-2" style="margin-top:5%">
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Create Class Schedule</h3>

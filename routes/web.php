@@ -109,3 +109,7 @@ Route::get('/subscription/create', [SubscriptionController::class, 'index'])->na
 Route::post('order-post', [SubscriptionController::class,'orderPost'])->name('order-post');
 
 Route::get('/pricing',[\App\Http\Controllers\GuestController::class,'pricing'])->name('pricing');
+
+Route::get('library', [GuestController::class, 'library'])->name('library');
+
+Route::get('download/{id}' ,[GuestController::class, 'download'])->name('download.book');
